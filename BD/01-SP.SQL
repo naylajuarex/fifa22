@@ -84,14 +84,14 @@ la función tiene que retornar la sumatoria de monedas por las transferencias ex
 DELIMITER $$
 DROP FUNCTION IF EXISTS gananciasEntre $$
 CREATE FUNCTION gananciasEntre (unIDjugador INT, unFyhPublicado DATETIME, unFyhTerminado DATETIME)
-RETURNS decimal
-READ SQL DATA
+RETURNS int
+READs SQL DATA
 BEGIN
-    DECLARE resultado decimal;
+    DECLARE resultado int;
 
-    SELECT  SUM(moneda*T.transfer) INTO resultado
+    SELECT  SUM(moneda) INTO resultado
     FROM    Jugador J
     inner join Transferencia T ON T.transfer = J.transfer
-    WHERE Fecha_in = unFyhPublicado AND Fecha_fin = unFyhTerminado;
+    WHERE Fecha_in between unFyhPublicado and unFyhTerminado;
     RETURN resultado;
 END $$

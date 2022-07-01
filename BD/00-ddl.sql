@@ -3,21 +3,12 @@ DROP DATABASE IF EXISTS fifa;
 CREATE DATABASE fifa;
 USE fifa;
 
-CREATE TABLE tipoHabilidad(
-    idHabilidad INT NOT NULL,
-    Velocidad TINYINT,
-    Remate TINYINT,
-    Pase TINYINT,
-    Defensa TINYINT,
-    PRIMARY KEY (idhabilidad)
-);
 
 CREATE TABLE Habilidad(
     idHabilidad INT NOT NULL,
     DesHabilidad VARCHAR(45) NOT NULL,
     PRIMARY KEY (idHabilidad),
     CONSTRAINT fk_habilidad_idHabilidad FOREIGN KEY(idHabilidad)
-        REFERENCES TipoHabilidad (idHabilidad)
 );
 
 CREATE TABLE Posicion(
@@ -33,6 +24,10 @@ CREATE Table futbolista(
     apellido VARCHAR(25) NOT NULL,
     nacimiento DATE NOT NULL,
     ubiCampo INT UNSIGNED NOT NULL,
+    Velocidad TINYINT,
+    Remate TINYINT,
+    Pase TINYINT,
+    Defensa TINYINT,
     PRIMARY KEY (idfutbolista),
     CONSTRAINT fk_futbolista_idHabilidad FOREIGN KEY(idHabilidad)
         REFERENCES Habilidad (idHabilidad),
