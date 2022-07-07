@@ -34,13 +34,7 @@ CREATE TABLE Jugador(
     PRIMARY KEY(idJugador)
 );
 
-CREATE TABLE Posesion(
-idJugador MEDIUMINT NOT NULL,
-idFutbolista MEDIUMINT UNSIGNED NOT NULL,
-PRIMARY KEY (idJugador, idFutbolista)
-);
-
-CREATE Table Futbolista(
+CREATE TABLE Futbolista(
     idFutbolista MEDIUMINT UNSIGNED NOT NULL,
     ubiCampo TINYINT UNSIGNED NOT NULL,
     nombre VARCHAR(30) NOT NULL,
@@ -55,6 +49,12 @@ CREATE Table Futbolista(
         REFERENCES Posicion (ubiCampo)
 );
 
+CREATE TABLE Posesion(
+idJugador MEDIUMINT NOT NULL,
+idFutbolista MEDIUMINT UNSIGNED NOT NULL,
+PRIMARY KEY (idJugador, idFutbolista)
+);
+
 CREATE TABLE FutbolistaHabilidad(
     idFutbolista MEDIUMINT UNSIGNED NOT NULL,
     idHabilidad TINYINT UNSIGNED NOT NULL,
@@ -62,6 +62,7 @@ CREATE TABLE FutbolistaHabilidad(
     CONSTRAINT fk_FutbolistaHabilidad_idHabilidad FOREIGN KEY (idHabilidad)
     REFERENCES Habilidad (idHabilidad)
 );
+
 
 
 

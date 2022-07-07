@@ -4,7 +4,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
 CREATE PROCEDURE altaFutbolista (unidFutbolista INT UNSIGNED, unnombre VARCHAR(30), unnacimiento DATE, unapellido VARCHAR(25), unubiCampo TINYINT UNSIGNED, unvelocidad TINYINT UNSIGNED, unremate TINYINT UNSIGNED, unpase TINYINT UNSIGNED, undefensa TINYINT UNSIGNED)
 BEGIN
-INSERT Futbolista (idfutbolista, nombre, nacimiento, apellido, idHabilidad, ubiCampo, velocidad, remate, pase,defensa)
+INSERT Futbolista (idFutbolista, nombre, nacimiento, apellido, idHabilidad, ubiCampo, velocidad, remate, pase,defensa)
 VALUES (unidFutbolista, unnombre, unnacimiento, unapellido, unidHabilidad, unubiCampo, unvelocidad, unremate, unpase, undefensa);
 END $$
 
@@ -13,7 +13,7 @@ DROP PROCEDURE IF EXISTS altaHabilidad $$
 CREATE PROCEDURE altaHabilidad (unidHabilidad TINYINT UNSIGNED, undescripcion VARCHAR(45), unnHabilidad VARCHAR (45))
 BEGIN
 INSERT Habilidad (idHabilidad, descripcion, nHabilidad)
-VALUES (unidhabilidad, undeshabilidad, nHabilidad);
+VALUES (unidHabilidad, undescripcion, nHabilidad);
 END $$
 
 DELIMITER $$
@@ -28,8 +28,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPosesion $$
 CREATE PROCEDURE altaPosesion (unidJugador MEDIUMINT UNSIGNED, unidFutbolista TINYINT UNSIGNED)
 BEGIN
-INSERT Posesion (idjugador, cantfutbolistas, idfutbolista)
-VALUES (unidjugador, uncantfutbolistas, unidfutbolista);
+INSERT Posesion (idJugador, idFutbolista)
+VALUES (unidJugador, unidFutbolista);
 END $$
 
 DELIMITER $$
@@ -53,17 +53,17 @@ Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS publicar $$
-CREATE PROCEDURE publicar(unIdJugador MEDIUMINT UNSIGNED, unIdFutbolista SMALLINT UNSIGNED, unPrecio MEDIUMINT UNSIGNED)
+CREATE PROCEDURE publicar (unidJugador MEDIUMINT UNSIGNED, unidFutbolista SMALLINT UNSIGNED, unprecio MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT INTO publicar (idJugador, idFutbolista, precio)
-        VALUES (unIdJugador, unIdFutbolista, unPrecio);
+    INSERT publicar (idJugador, idFutbolista, precio)
+        VALUES (unidJugador, unidFutbolista, unprecio);
 END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS comprar $$
-CREATE PROCEDURE comprar (unFyhPublicado DATETIME, unIdComprador MEDIUMINT UNSIGNED)
+CREATE PROCEDURE comprar (unfyhPublicado DATETIME, unidComprador MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT INTO comprar (fyhPublicado, idComprador)
-        VALUES (unFyhPublicado, unIdComprador);
+    INSERT comprar (fyhPublicado, idComprador)
+        VALUES (unfyhPublicado, unidComprador);
 END $$
 
 /*Realizar el SP ‘transferenciasActividas’ que reciba por parámetro la identificación de un futbolista y devuelva un listado de las transferencias activas (aquellas no exitosas)
@@ -71,14 +71,11 @@ donde se encuentra ese futbolista, ordenadas por fecha de publicación ascendent
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS transferenciasActividas $$
-CREATE PROCEDURE transferenciasActividas(unIdFutbolista MEDIUMINT UNSIGNED)
+CREATE PROCEDURE transferenciasActividas(unidFutbolista MEDIUMINT UNSIGNED)
 BEGIN
         SELECT idFutbolista
-        FROM Futbolista f
-        JOIN Posesion p on p.idFutbolista = f.idFutbolista
-        JOIN Jugador j on j.idJugador = p.idJugador
-        JOIN Transferencia t on idJugador = idVendedor
-        WHERE f.idFutbolista = unIdFutbolista AND fyhPublicado < CURDATE() AND fyhTerminado > CURDATE()
+        FROM Tranferencia
+        WHERE idFutbolista = unIdFutbolista AND fyhPublicado < CURDATE() AND fyhTerminado > CURDATE()
         ORDER BY fyhPublicado asc;
 END $$
 
@@ -87,16 +84,16 @@ la función tiene que retornar la sumatoria de monedas por las transferencias ex
 
 DELIMITER $$
 DROP FUNCTION IF EXISTS gananciasEntre $$
-CREATE FUNCTION gananciasEntre (unIdJugador MEDIUMINT UNSIGNED, unFyhPublicado DATETIME, unFyhTerminado DATETIME)
+CREATE FUNCTION gananciasEntre (unidJugador MEDIUMINT UNSIGNED, unfyhPublicado DATETIME, unfyhTerminado DATETIME)
 RETURNS INT
-READ SQL DATA
+READS SQL DATA
 BEGIN
     DECLARE resultado INT;
 
-    SELECT  SUM(moneda) INTO resultado
+    SELECT  SUM (moneda) INTO resultado
     FROM Jugador j
     JOIN Posesion p ON p.idJugador = j.idJugador
     JOIN Transferencia t ON t.idVendedor = p.idJugador
-    WHERE fyhPublicado BETWEEN unFyhPublicado AND unFyhTerminado
+    WHERE fyhPublicado BETWEEN unfyhPublicado AND unfyhTerminado
     RETURN resultado;
 END $$
