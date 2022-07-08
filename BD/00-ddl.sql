@@ -15,14 +15,6 @@ CREATE TABLE Habilidad(
     PRIMARY KEY (idHabilidad)
 );
 
-CREATE TABLE Transferencia(
-    fyhPublicado DATETIME NOT NULL, 
-    idVendedor SMALLINT UNSIGNED NOT NULL,  
-    idComprador SMALLINT UNSIGNED NOT NULL, 
-    precio MEDIUMINT UNSIGNED NOT NULL,
-    fyhTerminado DATETIME NOT NULL,
-    PRIMARY KEY (fyhPublicado)
-);
 
 CREATE TABLE Jugador(
     idJugador INT NOT NULL,
@@ -31,7 +23,7 @@ CREATE TABLE Jugador(
     Usuario VARCHAR(15) NOT NULL,
     Contrasena CHAR(64) NOT NULL,
     Moneda INT UNSIGNED NOT NULL,
-    PRIMARY KEY(idJugador)
+    PRIMARY KEY (idJugador)
 );
 
 CREATE TABLE Futbolista(
@@ -49,6 +41,22 @@ CREATE TABLE Futbolista(
         REFERENCES Posicion (ubiCampo)
 );
 
+CREATE TABLE Transferencia(
+    fyhPublicado DATETIME NOT NULL, 
+    idVendedor SMALLINT UNSIGNED NOT NULL,  
+    idComprador SMALLINT UNSIGNED NOT NULL, 
+    precio MEDIUMINT UNSIGNED NOT NULL,
+    fyhTerminado DATETIME NOT NULL,
+    PRIMARY KEY (fyhPublicado),
+    CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor)
+        REFERENCES Jugador (idJugador)
+    CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador)
+        REFERENCES Jugador (idJugador)
+    CONSTRAINT fk_Transferencia_idFutbolista FOREIGN KEY (idFutbolista)
+        REFERENCES Futbolista (idFutbolista)
+    );
+
+
 CREATE TABLE Posesion(
 idJugador MEDIUMINT NOT NULL,
 idFutbolista MEDIUMINT UNSIGNED NOT NULL,
@@ -60,7 +68,7 @@ CREATE TABLE FutbolistaHabilidad(
     idHabilidad TINYINT UNSIGNED NOT NULL,
     PRIMARY KEY (idFutbolista),
     CONSTRAINT fk_FutbolistaHabilidad_idHabilidad FOREIGN KEY (idHabilidad)
-    REFERENCES Habilidad (idHabilidad)
+        REFERENCES Habilidad (idHabilidad)
 );
 
 

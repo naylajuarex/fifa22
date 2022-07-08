@@ -89,11 +89,9 @@ RETURNS INT
 READS SQL DATA
 BEGIN
     DECLARE resultado INT;
-
     SELECT  SUM (moneda) INTO resultado
-    FROM Jugador j
-    JOIN Posesion p ON p.idJugador = j.idJugador
-    JOIN Transferencia t ON t.idVendedor = p.idJugador
+    FROM Jugador 
+    JOIN Transferencia ON T.idVendedor = J.idJugador
     WHERE fyhPublicado BETWEEN unfyhPublicado AND unfyhTerminado
     RETURN resultado;
 END $$
