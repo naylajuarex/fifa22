@@ -9,7 +9,7 @@ CREATE TABLE Posicion(
 );
 
 CREATE TABLE Habilidad(
-    idHabilidad TINYINT NOT NULL,
+    idHabilidad TINYINT UNSIGNED NOT NULL,
     nHabilidad VARCHAR (45) NOT NULL,
     descripcion VARCHAR (45) NOT NULL,
     PRIMARY KEY (idHabilidad)
@@ -17,7 +17,7 @@ CREATE TABLE Habilidad(
 
 
 CREATE TABLE Jugador(
-    idJugador INT NOT NULL,
+    idJugador MEDIUMINT UNSIGNED NOT NULL,
     Nombre VARCHAR(30) NOT NULL,
     Apellido VARCHAR(30) NOT NULL,
     Usuario VARCHAR(15) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE Jugador(
 );
 
 CREATE TABLE Futbolista(
-    idFutbolista MEDIUMINT UNSIGNED NOT NULL,
+    idFutbolista SMALLINT UNSIGNED NOT NULL,
     ubiCampo TINYINT UNSIGNED NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(25) NOT NULL,
@@ -41,35 +41,36 @@ CREATE TABLE Futbolista(
         REFERENCES Posicion (ubiCampo)
 );
 
-CREATE TABLE Transferencia(
-    fyhPublicado DATETIME NOT NULL, 
-    idVendedor SMALLINT UNSIGNED NOT NULL,  
-    idComprador SMALLINT UNSIGNED NOT NULL, 
-    precio MEDIUMINT UNSIGNED NOT NULL,
-    fyhTerminado DATETIME NOT NULL,
-    PRIMARY KEY (fyhPublicado),
-    CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor)
-        REFERENCES Jugador (idJugador)
-    CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador)
-        REFERENCES Jugador (idJugador)
-    CONSTRAINT fk_Transferencia_idFutbolista FOREIGN KEY (idFutbolista)
-        REFERENCES Futbolista (idFutbolista)
-    );
-
-
 CREATE TABLE Posesion(
 idJugador MEDIUMINT NOT NULL,
-idFutbolista MEDIUMINT UNSIGNED NOT NULL,
+idFutbolista SMALLINT UNSIGNED NOT NULL,
 PRIMARY KEY (idJugador, idFutbolista)
 );
 
 CREATE TABLE FutbolistaHabilidad(
-    idFutbolista MEDIUMINT UNSIGNED NOT NULL,
+    idFutbolista SMALLINT UNSIGNED NOT NULL,
     idHabilidad TINYINT UNSIGNED NOT NULL,
     PRIMARY KEY (idFutbolista),
     CONSTRAINT fk_FutbolistaHabilidad_idHabilidad FOREIGN KEY (idHabilidad)
         REFERENCES Habilidad (idHabilidad)
 );
+
+CREATE TABLE Transferencia(
+    fyhPublicado DATETIME NOT NULL, 
+    idVendedor MEDIUMINT UNSIGNED NOT NULL,  
+    idComprador MEDIUMINT UNSIGNED NOT NULL, 
+    precio MEDIUMINT UNSIGNED NOT NULL,
+    fyhTerminado DATETIME NOT NULL,
+    idFutbolista SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (fyhPublicado),
+    CONSTRAINT fk_Transferencia_idFutbolista FOREIGN KEY (idFutbolista)
+        REFERENCES Futbolista (idFutbolista),
+    CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor)
+        REFERENCES Jugador (idJugador),
+    CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador)
+        REFERENCES Jugador (idJugador)
+);
+
 
 
 

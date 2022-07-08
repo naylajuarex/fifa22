@@ -4,7 +4,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
 CREATE PROCEDURE altaFutbolista (unidFutbolista INT UNSIGNED, unnombre VARCHAR(30), unnacimiento DATE, unapellido VARCHAR(25), unubiCampo TINYINT UNSIGNED, unvelocidad TINYINT UNSIGNED, unremate TINYINT UNSIGNED, unpase TINYINT UNSIGNED, undefensa TINYINT UNSIGNED)
 BEGIN
-INSERT Futbolista (idFutbolista, nombre, nacimiento, apellido, idHabilidad, ubiCampo, velocidad, remate, pase,defensa)
+INSERT INTO Futbolista (idFutbolista, nombre, nacimiento, apellido, idHabilidad, ubiCampo, velocidad, remate, pase,defensa)
 VALUES (unidFutbolista, unnombre, unnacimiento, unapellido, unidHabilidad, unubiCampo, unvelocidad, unremate, unpase, undefensa);
 END $$
 
@@ -12,15 +12,15 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaHabilidad $$
 CREATE PROCEDURE altaHabilidad (unidHabilidad TINYINT UNSIGNED, undescripcion VARCHAR(45), unnHabilidad VARCHAR (45))
 BEGIN
-INSERT Habilidad (idHabilidad, descripcion, nHabilidad)
-VALUES (unidHabilidad, undescripcion, nHabilidad);
+INSERT INTO Habilidad (idHabilidad, descripcion, nHabilidad)
+VALUES (unidHabilidad, undescripcion, unnHabilidad);
 END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPosicion $$
 CREATE PROCEDURE altaPosicion (unubiCampo TINYINT, unnPosicion VARCHAR (30))
 BEGIN
-INSERT Posicion (ubiCampo, nPosicion)
+INSERT INTO  Posicion (ubiCampo, nPosicion)
 VALUES (unubiCampo, unnPosicion);
 END $$
 
@@ -28,7 +28,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPosesion $$
 CREATE PROCEDURE altaPosesion (unidJugador MEDIUMINT UNSIGNED, unidFutbolista TINYINT UNSIGNED)
 BEGIN
-INSERT Posesion (idJugador, idFutbolista)
+INSERT INTO  Posesion (idJugador, idFutbolista)
 VALUES (unidJugador, unidFutbolista);
 END $$
 
@@ -36,7 +36,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaJugador $$
 CREATE PROCEDURE altaJugador (unidJugador MEDIUMINT UNSIGNED, unnombre VARCHAR (30), unapellido VARCHAR (30), unusuario VARCHAR(15), uncontrasena CHAR(64), unmoneda MEDIUMINT UNSIGNED)
 BEGIN
-INSERT Jugador (idJugador, nombre, apellido, usuario, contrasena, moneda)
+INSERT INTO  Jugador (idJugador, nombre, apellido, usuario, contrasena, moneda)
 VALUES (unidJugador, unnombre, unapellido, unusuario, uncontrasena, unmoneda);
 END $$
 
@@ -44,7 +44,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolistaHabilidad $$
 CREATE PROCEDURE altaFutbolistaHabilidad (unidFutbolista SMALLINT UNSIGNED, unidHabilidad TINYINT UNSIGNED)
 BEGIN
-INSERT FutbolistaHabilidad (idFutbolista, idHabilidad)
+INSERT INTO FutbolistaHabilidad (idFutbolista, idHabilidad)
 VALUES (unidFutbolista, unidHabilidad)
 END $$
 
@@ -53,16 +53,16 @@ Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS publicar $$
-CREATE PROCEDURE publicar (unidJugador MEDIUMINT UNSIGNED, unidFutbolista SMALLINT UNSIGNED, unprecio MEDIUMINT UNSIGNED)
+CREATE PROCEDURE publicar (unidVendedor MEDIUMINT UNSIGNED, unidFutbolista SMALLINT UNSIGNED, unprecio MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT publicar (idJugador, idFutbolista, precio)
+    INSERT INTO Transferencia (idVendedor, idFutbolista, precio)
         VALUES (unidJugador, unidFutbolista, unprecio);
 END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS comprar $$
 CREATE PROCEDURE comprar (unfyhPublicado DATETIME, unidComprador MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT comprar (fyhPublicado, idComprador)
+    INSERT INTO Transferencia (fyhPublicado, idComprador)
         VALUES (unfyhPublicado, unidComprador);
 END $$
 
@@ -92,6 +92,6 @@ BEGIN
     SELECT  SUM (moneda) INTO resultado
     FROM Jugador 
     JOIN Transferencia ON T.idVendedor = J.idJugador
-    WHERE fyhPublicado BETWEEN unfyhPublicado AND unfyhTerminado
+    WHERE BETWEEN unfyhpublicado AND unfyhTerminado
     RETURN resultado;
 END $$
