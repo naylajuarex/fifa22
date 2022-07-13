@@ -45,7 +45,7 @@ DROP PROCEDURE IF EXISTS altaFutbolistaHabilidad $$
 CREATE PROCEDURE altaFutbolistaHabilidad (unidFutbolista SMALLINT UNSIGNED, unidHabilidad TINYINT UNSIGNED)
 BEGIN
 INSERT INTO FutbolistaHabilidad (idFutbolista, idHabilidad)
-VALUES (unidFutbolista, unidHabilidad)
+VALUES (unidFutbolista, unidHabilidad);
 END $$
 
 /*Hacer un SP llamado ‘publicar’ que recibe como parámetro un identificador de jugador, un identificador de futbolista y la cantidad de monedas a pagar.
@@ -55,14 +55,14 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS publicar $$
 CREATE PROCEDURE publicar (unidVendedor MEDIUMINT UNSIGNED, unidFutbolista SMALLINT UNSIGNED, unprecio MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT INTO Transferencia (idVendedor, idFutbolista, precio)
+    INSERT INTO publicar (idVendedor, idFutbolista, precio)
         VALUES (unidJugador, unidFutbolista, unprecio);
 END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS comprar $$
 CREATE PROCEDURE comprar (unfyhPublicado DATETIME, unidComprador MEDIUMINT UNSIGNED)
 BEGIN
-    INSERT INTO Transferencia (fyhPublicado, idComprador)
+    INSERT INTO comprar (fyhPublicado, idComprador)
         VALUES (unfyhPublicado, unidComprador);
 END $$
 
@@ -85,13 +85,12 @@ la función tiene que retornar la sumatoria de monedas por las transferencias ex
 DELIMITER $$
 DROP FUNCTION IF EXISTS gananciasEntre $$
 CREATE FUNCTION gananciasEntre (unidJugador MEDIUMINT UNSIGNED, unfyhPublicado DATETIME, unfyhTerminado DATETIME)
-RETURNS INT
-READS SQL DATA
+RETURNS INT READS SQL DATA
 BEGIN
     DECLARE resultado INT;
-    SELECT  SUM (moneda) INTO resultado
-    FROM Jugador 
-    JOIN Transferencia ON T.idVendedor = J.idJugador
-    WHERE BETWEEN unfyhpublicado AND unfyhTerminado
-    RETURN resultado;
-END $$
+    SELECT SUM(moneda) INTO resultado
+    FROM Jugador  
+    JOIN Transferencia ON idVendedor = idJugador
+    WHERE SUM(moneda) BETWEEN unfyhPublicado AND unfyhTerminado
+    RETURNS resultado;
+END $$ 

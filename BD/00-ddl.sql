@@ -18,11 +18,11 @@ CREATE TABLE Habilidad(
 
 CREATE TABLE Jugador(
     idJugador MEDIUMINT UNSIGNED NOT NULL,
-    Nombre VARCHAR(30) NOT NULL,
-    Apellido VARCHAR(30) NOT NULL,
-    Usuario VARCHAR(15) NOT NULL,
-    Contrasena CHAR(64) NOT NULL,
-    Moneda INT UNSIGNED NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    apellido VARCHAR(30) NOT NULL,
+    usuario VARCHAR(15) NOT NULL,
+    contrasena CHAR(64) NOT NULL,
+    moneda INT UNSIGNED NOT NULL,
     PRIMARY KEY (idJugador)
 );
 
