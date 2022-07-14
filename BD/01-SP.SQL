@@ -88,9 +88,11 @@ CREATE FUNCTION gananciasEntre (unidJugador MEDIUMINT UNSIGNED, unfyhPublicado D
 RETURNS INT READS SQL DATA
 BEGIN
     DECLARE resultado INT;
-    SELECT SUM(moneda) INTO resultado
+    SELECT SUM (moneda * fyhTerminado) INTO resultado
     FROM Jugador  
     JOIN Transferencia ON idVendedor = idJugador
-    WHERE SUM(moneda) BETWEEN unfyhPublicado AND unfyhTerminado
+    WHERE fyhTerminado BETWEEN unfyhPublicado AND unfyhTerminado
     RETURNS resultado;
-END $$ 
+END $$
+
+
