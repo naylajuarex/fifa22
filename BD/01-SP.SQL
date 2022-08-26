@@ -1,4 +1,4 @@
-/*Realizar los SP para dar de alta todas las entidades menos a Transferencia.*/
+-- Realizar los SP para dar de alta todas las entidades menos a Transferencia.
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
@@ -48,8 +48,7 @@ INSERT INTO FutbolistaHabilidad (idFutbolista, idHabilidad)
 VALUES (unidFutbolista, unidHabilidad);
 END $$
 
-/*Hacer un SP llamado ‘publicar’ que recibe como parámetro un identificador de jugador, un identificador de futbolista y la cantidad de monedas a pagar.
-Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación de una transferencia junto con la identificación del comprador, el SP tiene que cerrar la transferencia.*/
+-- Hacer un SP llamado ‘publicar’ que recibe como parámetro un identificador de jugador, un identificador de futbolista y la cantidad de monedas a pagar. Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación de una transferencia junto con la identificación del comprador, el SP tiene que cerrar la transferencia.
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS publicar $$
@@ -66,8 +65,7 @@ BEGIN
         VALUES (unfyhPublicado, unidComprador);
 END $$
 
-/*Realizar el SP ‘transferenciasActividas’ que reciba por parámetro la identificación de un futbolista y devuelva un listado de las transferencias activas (aquellas no exitosas)
-donde se encuentra ese futbolista, ordenadas por fecha de publicación ascendentemente.*/
+-- Realizar el SP ‘transferenciasActividas’ que reciba por parámetro la identificación de un futbolista y devuelva un listado de las transferencias activas (aquellas no exitosas) donde se encuentra ese futbolista, ordenadas por fecha de publicación ascendentemente.
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS transferenciasActividas $$
@@ -79,8 +77,7 @@ BEGIN
         ORDER BY fyhPublicado asc;
 END $$
 
-/*Realizar el SF ‘gananciasEntre’ que reciba como parámetro la identificación de un jugador y 2 fechas,
-la función tiene que retornar la sumatoria de monedas por las transferencias existosas de ese jugador entre esas 2 fechas.*/
+-- Realizar el SF ‘gananciasEntre’ que reciba como parámetro la identificación de un jugador y 2 fechas, la función tiene que retornar la sumatoria de monedas por las transferencias existosas de ese jugador entre esas 2 fechas.
 
 DELIMITER $$
 DROP FUNCTION IF EXISTS gananciasEntre $$
