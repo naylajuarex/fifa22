@@ -38,9 +38,9 @@ IF (EXISTS  (SELECT *
 END IF;
 END $$
 
-
 /*En caso de que el comprador ya posea al futbolista en cuestión, 
 tampoco se debe permitir la operación y se debe mostrar la leyenda “Jugador en posesión”.*/
+
 DELIMITER $$
 DROP TRIGGER IF EXISTS TienePosesion $$
 CREATE TRIGGER BefInsTienePosesion BEFORE INSERT ON Transferencia
@@ -48,7 +48,7 @@ FOR EACH ROW
 BEGIN 
         IF (EXISTS  (SELECT *
                 FROM Posesion
-                WHERE idFutbolista = NEW.idComprador
+                WHERE idFutbolista = NEW.idFutbolista
                 AND idJugador = NEW.idComprador)) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Jugador en posesion';
