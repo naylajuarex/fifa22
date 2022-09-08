@@ -30,17 +30,15 @@ DROP TRIGGER IF EXISTS BefInsTransferencia $$
 CREATE TRIGGER BefInsTransferencia BEFORE INSERT ON Transferencia
 FOR EACH ROW
 BEGIN 
-DECLARE Moneda MEDIUMINT;
-SELECT precio INTO Moneda
-FROM Transferencia;
 IF (EXISTS  (SELECT *
-                FROM    Transferencia
-                WHERE   Moneda < NEW.precio
-                AND idJugador = new.idComprador)) THEN
+                FROM    Jugador
+                WHERE   NEW.precio > moneda
+                AND idJugador = NEW.idComprador)) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Monedas insuficientes';
 END IF;
 END $$
+
 
 
 
