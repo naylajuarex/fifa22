@@ -39,7 +39,18 @@ IF (EXISTS  (SELECT *
 END IF;
 END $$
 
-
+DELIMITER $$
+DROP TRIGGER IF EXISTS TienePosesion $$
+CREATE TRIGGER BefInsTienePosesion BEFORE INSERT ON Transferencia
+FOR EACH ROW
+BEGIN 
+        IF (EXISTS  (SELECT *
+                FROM Transferencia
+                WHERE idFutbolista = NEW.idComprador)) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Jugador en posesion';
+END IF;
+END $$
 
 
 
