@@ -22,8 +22,7 @@ END $$
 
 /* Realizar un trigger para que antes de efectuar una compra, se verifique que el usuario comprador, 
 posea al menos la cantidad suficiente de monedas para la compra; en caso de no poseer las monedas, 
-se debe cancelar la operación y mostrar la leyenda “Monedas insuficientes”. En caso de que el comprador ya posea al futbolista en cuestión, 
-tampoco se debe permitir la operación y se debe mostrar la leyenda “Jugador en posesión”.*/
+se debe cancelar la operación y mostrar la leyenda “Monedas insuficientes”.*/
 
 DELIMITER $$
 DROP TRIGGER IF EXISTS BefInsTransferencia $$
@@ -39,14 +38,18 @@ IF (EXISTS  (SELECT *
 END IF;
 END $$
 
+
+/*En caso de que el comprador ya posea al futbolista en cuestión, 
+tampoco se debe permitir la operación y se debe mostrar la leyenda “Jugador en posesión”.*/
 DELIMITER $$
 DROP TRIGGER IF EXISTS TienePosesion $$
 CREATE TRIGGER BefInsTienePosesion BEFORE INSERT ON Transferencia
 FOR EACH ROW
 BEGIN 
         IF (EXISTS  (SELECT *
-                FROM Transferencia
-                WHERE idFutbolista = NEW.idComprador)) THEN
+                FROM Posesion
+                WHERE idFutbolista = NEW.idComprador
+                AND idJugador = NEW.idComprador)) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Jugador en posesion';
 END IF;
