@@ -24,3 +24,9 @@ END $$
 posea al menos la cantidad suficiente de monedas para la compra; en caso de no poseer las monedas, 
 se debe cancelar la operación y mostrar la leyenda “Monedas insuficientes”. En caso de que el comprador ya posea al futbolista en cuestión, 
 tampoco se debe permitir la operación y se debe mostrar la leyenda “Jugador en posesión”.*/
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS BefInsTransferencia $$
+CREATE TRIGGER BefInsTransferencia BEFORE INSERT ON Transferencia
+FOR EACH ROW
+BEGIN 
