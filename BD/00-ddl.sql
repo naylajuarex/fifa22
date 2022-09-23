@@ -13,9 +13,7 @@ CREATE TABLE Habilidad(
     nHabilidad VARCHAR (45) NOT NULL,
     descripcion VARCHAR (45) NOT NULL,
     PRIMARY KEY (idHabilidad)
-);
-
-
+);      
 CREATE TABLE Jugador(
     idJugador MEDIUMINT UNSIGNED NOT NULL,
     nombre VARCHAR(30) NOT NULL,

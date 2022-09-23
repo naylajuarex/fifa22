@@ -3,17 +3,12 @@ verifique que el usuario posea al futbolista en cuestión. En caso de no poseerl
 no se debe permitir la inserción de la fila y se debe mostrar la leyenda “El usuario nombreUsuario no posee a al futbolista NombreApellido"*/
 
 DELIMITER $$                                 
-DROP TRIGGER IF EXISTS befinsTrasferencia $$                        
-CREATE TRIGGER befinsTransferencia BEFORE INSERT ON Transferencia   
+DROP TRIGGER IF EXISTS NoPosee $$                        
+CREATE TRIGGER NoPosee BEFORE INSERT ON Transferencia   
 FOR EACH ROW
 BEGIN                        
-DECLARE FutbolistaJ SMALLINT;                                     
-SELECT idFutbolista INTO FutbolistaJ
-FROM Transferencia
-JOIN Jugador USING (idJugador)
-WHERE idJugador = NEW.idVendedor;
 IF (EXISTS  (SELECT *
-                FROM    Transferencia
+                FROM    Posesion
                 WHERE   idFutbolista != FutbolistaJ)) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'El usuario no posee al futbolista';
