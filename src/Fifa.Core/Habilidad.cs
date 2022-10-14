@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Fifa.Core
 {
-    public class NewClass
+    public class Habilidad
     {
-        
+        public byte id;
+        public string nHabilidad;
+        public string descripcion;
     }
 }

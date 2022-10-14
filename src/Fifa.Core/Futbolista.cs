@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 namespace Fifa.Core
 {
-    public class NewClass
+    public class Futbolista
     {
-        
+        public ushort id;
+        public byte ubiCampo;
+        public string nombre;
+        public string apellido;
+        public datetime nacimiento;
+        public byte velocidad;
+        public byte remate;
+        public byte pase;
+        public byte defensa;
     }
 }

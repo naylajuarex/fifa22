@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Fifa.Core
 {
-    public class NewClass
+    public class Posicion
     {
-        
+        public byte ubiCampo;
+        public string nPosicion;
     }
 }

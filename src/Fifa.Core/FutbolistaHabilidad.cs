@@ -7,6 +7,7 @@ namespace Fifa.Core
 {
     public class FutbolistaHabilidad
     {
-        
+        public int idJugador;
+        public ushort idHabilidad;
     }
 }
