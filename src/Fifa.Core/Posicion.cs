@@ -7,7 +7,12 @@ namespace Fifa.Core
 {
     public class Posicion
     {
-        public Byte ubiCampo;
-        public String nPosicion;
+        public byte ubiCampo { get; set; }
+        public string nPosicion { get; set; }
+
+        public Posicion(string nPosicion)
+        {
+            this.nPosicion = nPosicion;
+        }
     }
 }

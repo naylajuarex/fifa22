@@ -7,7 +7,8 @@ namespace Fifa.Core
 {
     public class Posesion
     {
-        public int idJugador;
-        public ushort idFutbolista;
+        public int idJugador { get; set; }
+        public ushort idFutbolista { get; set; }
+
     }
 }

@@ -7,8 +7,16 @@ namespace Fifa.Core
 {
     public class Habilidad
     {
-        public Byte ID;
-        public String nHabilidad;
-        public String descripcion;
+        public byte idHabilidad { get; set; }
+        public string nHabilidad { get; set; }
+        public string descripcion { get; set; }
+
+        public Habilidad(string nHabilidad, string descripcion)
+        {
+            this.nHabilidad = nHabilidad;
+            this.descripcion = descripcion;
+        }
+
+
     }
 }
