@@ -16,7 +16,7 @@ namespace Fifa.Core
         public byte remate { get; set; }
         public byte pase { get; set; }
         public byte defensa { get; set; }
-
+        public Futbolista(){}
         public Futbolista(byte ubiCampo, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
         {
             this.ubiCampo = ubiCampo;
