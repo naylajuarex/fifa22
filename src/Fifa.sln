@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.Core", "Fifa.Core\Fifa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.AdoMysql", "Fifa.AdoMysql\Fifa.AdoMysql.csproj", "{2E019BC4-888F-456E-87BD-B520AB51780B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.AdoMysql.Test", "Fifa.AdoMysql.Test\Fifa.AdoMysql.Test.csproj", "{74FFC61E-2FAA-4142-9BF4-5F6F210C4086}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{2E019BC4-888F-456E-87BD-B520AB51780B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E019BC4-888F-456E-87BD-B520AB51780B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E019BC4-888F-456E-87BD-B520AB51780B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FFC61E-2FAA-4142-9BF4-5F6F210C4086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FFC61E-2FAA-4142-9BF4-5F6F210C4086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FFC61E-2FAA-4142-9BF4-5F6F210C4086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FFC61E-2FAA-4142-9BF4-5F6F210C4086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
