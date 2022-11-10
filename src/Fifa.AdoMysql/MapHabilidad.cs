@@ -1,16 +1,16 @@
-﻿using et12.edu.ar.AGBD.Mapeadores;
+using et12.edu.ar.AGBD.Mapeadores;
 using et12.edu.ar.AGBD.Ado;
 using System.Data;
 using Fifa.Core;
 
 namespace Fifa.AdoMysql;
-public class MapJugador : Mapeador<Jugador>
+public class MapHabilidad : Mapeador<Habilidad>
 {
-    public MapJugador(AdoAGBD ado) : base(ado) => Tabla = "Jugador";
-    public override Jugador ObjetoDesdeFila(DataRow fila)
-            => new Jugador()
+    public MapHabilidad(AdoAGBD ado) : base(ado) => Tabla = "Habilidad";
+    public override Habilidad ObjetoDesdeFila(DataRow fila)
+            => new Habilidad()
             {
-                idJugador = Convert.ToUInt16(fila["idJugador"]),
+                idHabilidad = Convert.ToUInt16(fila["idHabilidad"]),
                 Nombre = fila["nombre"].ToString(),
                 Apellido = fila["apellido"].ToString(),
                 Usuario = fila["usuario"].ToString(),
@@ -18,49 +18,48 @@ public class MapJugador : Mapeador<Jugador>
                 Moneda = Convert.ToUInt16(fila["moneda"]),
             };
 
-    public void AltaJugador(Jugador jugador)
-        => EjecutarComandoCon("altaJugador", ConfigurarAltaJugador, PostAltaJugador, jugador);
+    public void AltaHabilidad(Habilidad habilidad)
+        => EjecutarComandoCon("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, Habilidad);
 
-    public void ConfigurarAltaJugador(Jugador jugador)
+    public void ConfigurarAltaHabilidad(Habilidad habilidad)
     {
-        SetComandoSP("altaJugador");
+        SetComandoSP("altaHabilidad");
 
-        BP.CrearParametroSalida("unidJugador")
+        BP.CrearParametroSalida("unidHabilidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
-            .SetValor(jugador.idJugador)
+            .SetValor(Habilidad.idHabilidad)
             .AgregarParametro();
 
         BP.CrearParametro("unnombre")
             .SetTipoVarchar(30)
-            .SetValor(jugador.Nombre)
+            .SetValor(Habilidad.Nombre)
             .AgregarParametro();
 
         BP.CrearParametro("unapellido")
             .SetTipoVarchar(30)
-            .SetValor(jugador.Apellido)
+            .SetValor(Habilidad.Apellido)
             .AgregarParametro();
 
         BP.CrearParametro("unusuario")
             .SetTipoVarchar(15)
-            .SetValor(jugador.Usuario)
+            .SetValor(Habilidad.Usuario)
             .AgregarParametro();
 
         BP.CrearParametro("uncontrasena")
             .SetTipoChar(64)
-            .SetValor(jugador.Contrasena)
+            .SetValor(Habilidad.Contrasena)
             .AgregarParametro();
 
         BP.CrearParametro("unmoneda")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
-            .SetValor(jugador.Moneda)
+            .SetValor(Habilidad.Moneda)
             .AgregarParametro();
 
     }
 
-    public void PostAltaJugador(Jugador jugador)
+    public void PostAltaHabilidad(Habilidad Habilidad)
     {
-        var paramIdJugador = GetParametro("unIdJugador");
-        jugador.idJugador = Convert.ToByte(paramIdJugador.Value);
+        var paramIdHabilidad = GetParametro("unIdHabilidad");
+        Habilidad.idHabilidad = Convert.ToByte(paramIdHabilidad.Value);
     }
 }
-

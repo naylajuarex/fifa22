@@ -13,12 +13,14 @@ public class Jugador
     {
     }
 
-    public Jugador(string nombre, string apellido, string usuario, string contrasena)
+    public Jugador(uint idJugador, string Nombre, string Apellido, string Usuario, string Contrasena, uint Moneda)
     {
-        this.Nombre = nombre;
-        this.Apellido = apellido;
-        this.Usuario = usuario;
-        this.Contrasena = contrasena;
+        this.idJugador = idJugador;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Usuario = Usuario;
+        this.Contrasena = Contrasena;
+        this.Moneda = Moneda;
     }
 
 }

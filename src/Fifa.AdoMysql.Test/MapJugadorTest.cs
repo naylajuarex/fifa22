@@ -16,13 +16,13 @@ public class MapJugadorTest
     [Fact]
     public void AltaJugador()
     {
-        var jugador = new Jugador("Fernando", "Flores", "Fernanfloo", "fernanelcrack");
+        var jugador = new Jugador(1, "Fernando", "Flores", "Fernanfloo", "fernanelcrack", 10);
         Ado.AltaJugador(jugador);
-        Assert.Equal((uint)2, jugador.idJugador);
+        Assert.Equal((uint)1, jugador.idJugador);
     }
 
     [Theory]
-    [InlineData(1, "FernanElFail")]
+    [InlineData(2, "FernanElFail")]
 
     public void TraerJugadores(byte id, string nombre)
     {

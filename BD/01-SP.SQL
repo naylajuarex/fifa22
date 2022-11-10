@@ -42,7 +42,7 @@ VALUES (
         undefensa
     );
 
-END $$
+END $$ 
 
 DELIMITER $$
 
@@ -66,7 +66,7 @@ VALUES (
         unnHabilidad
     );
 
-END $$
+END $$ 
 
 DELIMITER $$
 
@@ -81,7 +81,7 @@ INSERT INTO
     Posicion (ubiCampo, nPosicion)
 VALUES (unubiCampo, unnPosicion);
 
-END $$
+END $$ 
 
 DELIMITER $$
 
@@ -96,7 +96,7 @@ INSERT INTO
     Posesion (idJugador, idFutbolista)
 VALUES (unidJugador, unidFutbolista);
 
-END $$
+END $$ 
 
 DELIMITER $$
 
@@ -104,7 +104,7 @@ DROP PROCEDURE
     IF EXISTS altaJugador $$
 CREATE PROCEDURE
     altaJugador (
-        unidJugador MEDIUMINT UNSIGNED,
+        OUT unidJugador MEDIUMINT UNSIGNED,
         unnombre VARCHAR (30),
         unapellido VARCHAR (30),
         unusuario VARCHAR(15),
@@ -113,7 +113,6 @@ CREATE PROCEDURE
     ) BEGIN
 INSERT INTO
     Jugador (
-        idJugador,
         Nombre,
         Apellido,
         Usuario,
@@ -121,7 +120,6 @@ INSERT INTO
         Moneda
     )
 VALUES (
-        unidJugador,
         unnombre,
         unapellido,
         unusuario,
@@ -129,7 +127,9 @@ VALUES (
         unmoneda
     );
 
-END $$
+SET unidJugador = last_insert_id();
+
+END $$ 
 
 DELIMITER $$
 
@@ -169,7 +169,7 @@ VALUES (
         unprecio
     );
 
-END $$
+END $$ 
 
 DELIMITER $$
 
@@ -201,8 +201,7 @@ WHERE
     idFutbolista = unIdFutbolista
     AND fyhPublicado < CURDATE()
     AND fyhTerminado > CURDATE()
-ORDER BY
-    fyhPublicado asc;
+ORDER BY fyhPublicado asc;
 
 END $$
 /*Realizar el SF ‘gananciasEntre’ que reciba como parámetro la identificación de un jugador y 2 fechas, la función tiene que retornar la sumatoria de monedas por las transferencias existosas de ese jugador entre esas 2 fechas.*/
@@ -227,4 +226,4 @@ WHERE
 
 RETURN resultado;
 
-END $$
+END $$ 
