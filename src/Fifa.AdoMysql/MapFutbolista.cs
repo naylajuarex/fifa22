@@ -12,8 +12,8 @@ public class MapFutbolista : Mapeador<Futbolista>
             {
                 idFutbolista = Convert.ToByte(fila["idFutbolista"]),
                 ubiCampo = Convert.ToByte(fila["ubiCampo"]),
-                nombre = fila["nombre"].ToString(),
-                apellido = fila["apellido"].ToString(),
+                nombre = fila["nombre"].ToString()!,
+                apellido = fila["apellido"].ToString()!,
                 nacimiento = Convert.ToDateTime(fila["nacimiento"]),
                 velocidad = Convert.ToByte(fila["velocidad"]),
                 remate = Convert.ToByte(fila["remate"]),
@@ -23,6 +23,9 @@ public class MapFutbolista : Mapeador<Futbolista>
 
     public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("AltaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
+
+            public Futbolista FutbolistaPorId(Int16 id)
+            => FiltrarPorPK("idFutbolista", id)!;
 
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {

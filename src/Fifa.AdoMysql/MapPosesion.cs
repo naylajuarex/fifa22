@@ -6,12 +6,21 @@ using Fifa.Core;
 namespace Fifa.AdoMysql;
 public class MapPosesion : Mapeador<Posesion>
 {
+    public MapJugador MapJugador { get; set; }
+
+    public MapFutbolista MapFutbolista { get; set; }
     public MapPosesion(AdoAGBD ado) : base(ado) => Tabla = "Posesion";
+    public MapPosesion(MapJugador mapJugador,MapFutbolista mapFutbolista) : this(mapJugador.AdoAGBD)
+    {
+        MapJugador = mapJugador;
+        MapFutbolista = mapFutbolista;
+    }
+    
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-                posesion = MapPosesion.FiltrarPorPk("idPosesion", Convert.ToUInt16(fila["idPosesion"])),
-                idJugador = Convert.ToUInt16(fila["idJugador"]),
+            idJugador = MapJugador.JugadorPorId (Convert.ToUInt16(fila["idJugador"])),
+            idFutbolista = MapFutbolista.FutbolistaPorId ("idFutbolista", Convert.ToByte(fila["idFutbolista"])),
             };
 
     public void AltaPosesion(Posesion posesion)
@@ -36,6 +45,6 @@ public class MapPosesion : Mapeador<Posesion>
     public void PostAltaPosesion(Posesion posesion)
     {
         var paramIdPosesion = GetParametro("unIdPosesion");
-        posesion. = Convert.UInt16(paramIdPosesion.Value);
+        posesion.idFutbolista = Convert.ToUInt16(paramIdPosesion.Value);
     }
 }

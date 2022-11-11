@@ -11,15 +11,18 @@ public class MapJugador : Mapeador<Jugador>
             => new Jugador()
             {
                 idJugador = Convert.ToUInt16(fila["idJugador"]),
-                Nombre = fila["nombre"].ToString(),
-                Apellido = fila["apellido"].ToString(),
-                Usuario = fila["usuario"].ToString(),
-                Contrasena = fila["contrasena"].ToString(),
+                Nombre = fila["nombre"].ToString()!,
+                Apellido = fila["apellido"].ToString()!,
+                Usuario = fila["usuario"].ToString()!,
+                Contrasena = fila["contrasena"].ToString()!,
                 Moneda = Convert.ToUInt16(fila["moneda"]),
             };
 
     public void AltaJugador(Jugador jugador)
         => EjecutarComandoCon("altaJugador", ConfigurarAltaJugador, PostAltaJugador, jugador);
+
+        public Jugador JugadorPorId(Int16 id)
+            => FiltrarPorPK("idJugador", id)!;
 
     public void ConfigurarAltaJugador(Jugador jugador)
     {

@@ -11,7 +11,7 @@ public class MapPosicion : Mapeador<Posicion>
             => new Posicion()
             {
                 ubiCampo = Convert.ToByte(fila["ubiCampo"]),
-                nPosicion = fila["nPosicion"].ToString(),
+                nPosicion = fila["nPosicion"].ToString()!,
             };
 
     public void AltaHabilidad(Posicion posicion)
