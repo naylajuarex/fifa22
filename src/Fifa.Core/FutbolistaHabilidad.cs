@@ -8,11 +8,16 @@ namespace Fifa.Core
     public class FutbolistaHabilidad
     {
         public int idFutbolista { get; set; }
-        public ushort idHabilidad { get; set; }
+        public byte idHabilidad { get; set; }
 
-        public FutbolistaHabilidad(ushort idHabilidad)
+        public FutbolistaHabilidad(byte idHabilidad)
         {
             this.idHabilidad = idHabilidad;
+        }
+
+        public FutbolistaHabilidad()
+        {
+
         }
     }
 }

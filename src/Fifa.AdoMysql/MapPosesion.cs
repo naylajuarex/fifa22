@@ -36,6 +36,6 @@ public class MapPosesion : Mapeador<Posesion>
     public void PostAltaPosesion(Posesion posesion)
     {
         var paramIdPosesion = GetParametro("unIdPosesion");
-        posesion.i = Convert.UInt16(paramIdPosesion.Value);
+        posesion. = Convert.UInt16(paramIdPosesion.Value);
     }
 }

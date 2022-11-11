@@ -10,32 +10,32 @@ public class MapFutbolistaHabilidad : Mapeador<FutbolistaHabilidad>
     public override FutbolistaHabilidad ObjetoDesdeFila(DataRow fila)
             => new FutbolistaHabilidad()
             {
-                ubiCampo = Convert.ToByte(fila["ubiCampo"]),
-                nPosicion = fila["nPosicion"].ToString(),
+                idFutbolista = Convert.ToByte(fila["idFutbolista"]),
+                idHabilidad = Convert.ToByte(fila["idHabilidad"]),
             };
 
-    public void AltaHabilidad(FutbolistaHabilidad futbolistaHabilidad)
-        => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
+    public void AltaFutbolistaHabilidad(FutbolistaHabilidad futbolistaHabilidad)
+        => EjecutarComandoCon("altaFutbolistaHabilidad", ConfigurarAltaFutbolistaHabilidad, PostAltaFutbolistaHabilidad, futbolistaHabilidad);
 
-    public void ConfigurarAltaPosicion(Posicion posicion)
+    public void ConfigurarAltaFutbolistaHabilidad(FutbolistaHabilidad futbolistaHabilidad)
     {
-        SetComandoSP("altaPosicion");
+        SetComandoSP("AltaFutbolistaHabilidad");
 
-        BP.CrearParametroSalida("unubiCampo")
+        BP.CrearParametroSalida("unidFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(posicion.ubiCampo)
+            .SetValor(futbolistaHabilidad.idFutbolista)
             .AgregarParametro();
 
-        BP.CrearParametro("unnPosicion")
-            .SetTipoVarchar(20)
-            .SetValor(posicion.nPosicion)
+        BP.CrearParametro("unidHabilidad")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(futbolistaHabilidad.idFutbolista)
             .AgregarParametro();
 
     }
 
-    public void PostAltaPosicion(Posicion posicion)
+    public void PostAltaFutbolistaHabilidad(FutbolistaHabilidad futbolistaHabilidad)
     {
-        var paramubiCampo = GetParametro("unubiCampo");
-        posicion.ubiCampo = Convert.ToByte(paramubiCampo.Value);
+        var paramidFutbolista = GetParametro("unidFutbolista");
+        futbolistaHabilidad.idFutbolista = Convert.ToByte(paramidFutbolista.Value);
     }
 }

@@ -7,7 +7,7 @@ namespace Fifa.Core
 {
     public class Futbolista
     {
-        public ushort idFutbolista { get; set; }
+        public byte idFutbolista { get; set; }
         public byte ubiCampo { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -16,7 +16,10 @@ namespace Fifa.Core
         public byte remate { get; set; }
         public byte pase { get; set; }
         public byte defensa { get; set; }
-        public Futbolista(){}
+        public Futbolista()
+        {
+
+        }
         public Futbolista(byte ubiCampo, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
         {
             this.ubiCampo = ubiCampo;
@@ -27,6 +30,7 @@ namespace Fifa.Core
             this.remate = remate;
             this.pase = pase;
             this.defensa = defensa;
+            this.idFutbolista = idFutbolista;
         }
 
 

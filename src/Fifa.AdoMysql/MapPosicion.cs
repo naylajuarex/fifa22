@@ -14,7 +14,7 @@ public class MapPosicion : Mapeador<Posicion>
                 nPosicion = fila["nPosicion"].ToString(),
             };
 
-    public void AltaHabilidad(Habilidad habilidad)
+    public void AltaHabilidad(Posicion posicion)
         => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
 
     public void ConfigurarAltaPosicion(Posicion posicion)
