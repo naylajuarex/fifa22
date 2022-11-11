@@ -14,7 +14,7 @@ public class MapJugador : Mapeador<Jugador>
                 Nombre = fila["nombre"].ToString(),
                 Apellido = fila["apellido"].ToString(),
                 Usuario = fila["usuario"].ToString(),
-                Contrasena = fila["contraseña"].ToString(),
+                Contrasena = fila["contrasena"].ToString(),
                 Moneda = Convert.ToUInt16(fila["moneda"]),
             };
 

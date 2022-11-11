@@ -10,16 +10,13 @@ public class MapHabilidad : Mapeador<Habilidad>
     public override Habilidad ObjetoDesdeFila(DataRow fila)
             => new Habilidad()
             {
-                idHabilidad = Convert.ToUInt16(fila["idHabilidad"]),
-                Nombre = fila["nombre"].ToString(),
-                Apellido = fila["apellido"].ToString(),
-                Usuario = fila["usuario"].ToString(),
-                Contrasena = fila["contraseña"].ToString(),
-                Moneda = Convert.ToUInt16(fila["moneda"]),
+                idHabilidad = Convert.ToByte(fila["idHabilidad"]),
+                nHabilidad = fila["nHabilidad"].ToString(),
+                descripcion = fila["Descripcion"].ToString(),
             };
 
     public void AltaHabilidad(Habilidad habilidad)
-        => EjecutarComandoCon("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, Habilidad);
+        => EjecutarComandoCon("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 
     public void ConfigurarAltaHabilidad(Habilidad habilidad)
     {
@@ -27,39 +24,24 @@ public class MapHabilidad : Mapeador<Habilidad>
 
         BP.CrearParametroSalida("unidHabilidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
-            .SetValor(Habilidad.idHabilidad)
+            .SetValor(habilidad.idHabilidad)
             .AgregarParametro();
 
-        BP.CrearParametro("unnombre")
-            .SetTipoVarchar(30)
-            .SetValor(Habilidad.Nombre)
+        BP.CrearParametro("unnHabilidad")
+            .SetTipoVarchar(45)
+            .SetValor(habilidad.nHabilidad)
             .AgregarParametro();
 
-        BP.CrearParametro("unapellido")
-            .SetTipoVarchar(30)
-            .SetValor(Habilidad.Apellido)
-            .AgregarParametro();
-
-        BP.CrearParametro("unusuario")
-            .SetTipoVarchar(15)
-            .SetValor(Habilidad.Usuario)
-            .AgregarParametro();
-
-        BP.CrearParametro("uncontrasena")
-            .SetTipoChar(64)
-            .SetValor(Habilidad.Contrasena)
-            .AgregarParametro();
-
-        BP.CrearParametro("unmoneda")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
-            .SetValor(Habilidad.Moneda)
+        BP.CrearParametro("undescripcion")
+            .SetTipoVarchar(45)
+            .SetValor(habilidad.descripcion)
             .AgregarParametro();
 
     }
 
-    public void PostAltaHabilidad(Habilidad Habilidad)
+    public void PostAltaHabilidad(Habilidad habilidad)
     {
-        var paramIdHabilidad = GetParametro("unIdHabilidad");
-        Habilidad.idHabilidad = Convert.ToByte(paramIdHabilidad.Value);
+        var paramIdHabilidad = GetParametro("unidHabilidad");
+        habilidad.idHabilidad = Convert.ToByte(paramIdHabilidad.Value);
     }
 }

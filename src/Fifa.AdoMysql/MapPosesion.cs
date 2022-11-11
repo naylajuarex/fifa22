@@ -10,7 +10,7 @@ public class MapPosesion : Mapeador<Posesion>
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-                Posesion = MapPosesion.FiltrarPorPk("idPosesion", Convert.ToUInt16(fila["idPosesion"])),
+                posesion = MapPosesion.FiltrarPorPk("idPosesion", Convert.ToUInt16(fila["idPosesion"])),
                 idJugador = Convert.ToUInt16(fila["idJugador"]),
             };
 

@@ -17,6 +17,11 @@ namespace Fifa.Core
             this.descripcion = descripcion;
         }
 
+        public Habilidad()
+        {
+
+        }
+
 
     }
 }

@@ -14,5 +14,10 @@ namespace Fifa.Core
         {
             this.nPosicion = nPosicion;
         }
+
+        public Posicion()
+        {
+
+        }
     }
 }
