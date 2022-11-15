@@ -10,17 +10,17 @@ public class MapPosesion : Mapeador<Posesion>
 
     public MapFutbolista MapFutbolista { get; set; }
     public MapPosesion(AdoAGBD ado) : base(ado) => Tabla = "Posesion";
-    public MapPosesion(MapJugador mapJugador,MapFutbolista mapFutbolista) : this(mapJugador.AdoAGBD)
+    public MapPosesion(MapJugador mapJugador, MapFutbolista mapFutbolista) : this(mapJugador.AdoAGBD)
     {
         MapJugador = mapJugador;
         MapFutbolista = mapFutbolista;
     }
-    
+
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-            idJugador = MapJugador.JugadorPorId (Convert.ToUInt16(fila["idJugador"])),
-            idFutbolista = MapFutbolista.FutbolistaPorId ("idFutbolista", Convert.ToByte(fila["idFutbolista"])),
+                idJugador = MapJugador.JugadorPorId(Convert.ToUInt16(fila["idJugador"])),
+                idFutbolista = MapFutbolista.FutbolistaPorId("idFutbolista", Convert.ToByte(fila["idFutbolista"])),
             };
 
     public void AltaPosesion(Posesion posesion)
