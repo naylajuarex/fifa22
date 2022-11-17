@@ -22,7 +22,7 @@ public class MapJugadorTest
     }
 
     [Theory]
-    [InlineData(2, "FernanElFail")]
+    [InlineData(1, "Fernando")]
 
     public void TraerJugadores(byte id, string nombre)
     {
