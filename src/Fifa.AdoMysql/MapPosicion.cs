@@ -6,6 +6,7 @@ using Fifa.Core;
 namespace Fifa.AdoMysql;
 public class MapPosicion : Mapeador<Posicion>
 {
+
     public MapPosicion(AdoAGBD ado) : base(ado) => Tabla = "Posicion";
     public override Posicion ObjetoDesdeFila(DataRow fila)
             => new Posicion()

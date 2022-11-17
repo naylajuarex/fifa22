@@ -24,8 +24,8 @@ public class MapFutbolista : Mapeador<Futbolista>
     public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("AltaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
 
-            public Futbolista FutbolistaPorId(Int16 id)
-            => FiltrarPorPK("idFutbolista", id)!;
+    public Futbolista FutbolistaPorId(Int16 id)
+    => FiltrarPorPK("idFutbolista", id)!;
 
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {

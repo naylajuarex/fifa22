@@ -19,12 +19,12 @@ public class MapPosesion : Mapeador<Posesion>
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-                idJugador = MapJugador.JugadorPorId(Convert.ToUInt16(fila["idJugador"])),
-                idFutbolista = MapFutbolista.FutbolistaPorId("idFutbolista", Convert.ToByte(fila["idFutbolista"])),
+                idJugador = MapJugador.JugadorPorId(Convert.ToInt16(fila["idJugador"])),
+                idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"])),
             };
 
     public void AltaPosesion(Posesion posesion)
-        => EjecutarComandoCon("altaPosesion", ConfigurarAltaPosesion, PostAltaPosesion, posesion);
+        => EjecutarComandoCon("altaPosesion", ConfigurarAltaPosesion, posesion);
 
     public void ConfigurarAltaPosesion(Posesion Posesion)
     {
@@ -42,9 +42,4 @@ public class MapPosesion : Mapeador<Posesion>
 
     }
 
-    public void PostAltaPosesion(Posesion posesion)
-    {
-        var paramIdPosesion = GetParametro("unIdPosesion");
-        posesion.idFutbolista = Convert.ToUInt16(paramIdPosesion.Value);
-    }
 }
