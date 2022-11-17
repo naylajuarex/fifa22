@@ -8,7 +8,7 @@ namespace Fifa.Core
     public class Transferencia
     {
         public DateTime fyhPublicado { get; set; }
-        public uint idVendedo { get; set; }
+        public uint idVendedor { get; set; }
         public uint idComprador { get; set; }
         public uint precio { get; set; }
         public DateTime fyhTerminado { get; set; }

@@ -41,4 +41,5 @@ public class MapPosesion : Mapeador<Posesion>
             .AgregarParametro();
 
     }
+
 }
