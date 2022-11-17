@@ -6,12 +6,18 @@ using Fifa.Core;
 namespace Fifa.AdoMysql;
 public class MapFutbolistaHabilidad : Mapeador<FutbolistaHabilidad>
 {
+    public MapHabilidad MapHabilidad { get; set; }
     public MapFutbolistaHabilidad(AdoAGBD ado) : base(ado) => Tabla = "FutbolistaHabilidad";
+
+    public MapFutbolistaHabilidad(MapHabilidad mapHabilidad) : this(mapHabilidad.AdoAGBD)
+    {
+        MapHabilidad = mapHabilidad;
+    }
     public override FutbolistaHabilidad ObjetoDesdeFila(DataRow fila)
             => new FutbolistaHabilidad()
             {
                 idFutbolista = Convert.ToByte(fila["idFutbolista"]),
-                idHabilidad = Convert.ToByte(fila["idHabilidad"]),
+                idHabilidad = MapHabilidad.HabilidadPorId(Convert.ToByte(fila["idHabilidad"])),
             };
 
     public void AltaFutbolistaHabilidad(FutbolistaHabilidad futbolistaHabilidad)

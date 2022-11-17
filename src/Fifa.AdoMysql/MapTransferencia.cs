@@ -18,3 +18,4 @@ public class MapTransferencia : Mapeador<Transferencia>
                 precio = Convert.ToUInt16(fila["precio"]),
                 idFutbolista = Convert.ToByte(fila["idFutbolista"]),
             };
+}

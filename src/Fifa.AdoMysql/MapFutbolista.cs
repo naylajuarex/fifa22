@@ -6,12 +6,17 @@ using Fifa.Core;
 namespace Fifa.AdoMysql;
 public class MapFutbolista : Mapeador<Futbolista>
 {
+    public MapPosicion MapPosicion { get; set; }
     public MapFutbolista(AdoAGBD ado) : base(ado) => Tabla = "Futbolista";
+
+    public MapFutbolista(MapPosicion mapPosicion) : this(mapPosicion.AdoAGBD)
+    {
+        MapPosicion = mapPosicion;
+    }
     public override Futbolista ObjetoDesdeFila(DataRow fila)
             => new Futbolista()
             {
                 idFutbolista = Convert.ToByte(fila["idFutbolista"]),
-                ubiCampo = Convert.ToByte(fila["ubiCampo"]),
                 nombre = fila["nombre"].ToString()!,
                 apellido = fila["apellido"].ToString()!,
                 nacimiento = Convert.ToDateTime(fila["nacimiento"]),
@@ -19,6 +24,7 @@ public class MapFutbolista : Mapeador<Futbolista>
                 remate = Convert.ToByte(fila["remate"]),
                 pase = Convert.ToByte(fila["pase"]),
                 defensa = Convert.ToByte(fila["defensa"]),
+                ubiCampo = MapPosicion.PosicionPorId(Convert.ToByte(fila["ubiCampo"])),
             };
 
     public void AltaFutbolista(Futbolista futbolista)

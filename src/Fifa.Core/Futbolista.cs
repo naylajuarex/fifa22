@@ -8,7 +8,7 @@ namespace Fifa.Core
     public class Futbolista
     {
         public byte idFutbolista { get; set; }
-        public byte ubiCampo { get; set; }
+        public Posicion ubiCampo { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public DateTime nacimiento { get; set; }
