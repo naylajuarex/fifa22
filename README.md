@@ -13,7 +13,7 @@
 
 **Asignatura**: Administracion y Gestion de Base de Datos
 
-**Nombre TP**: Fifa
+**Nombre TP**: Proyecto Fifa
 
 **Apellido y nombre Alumno**: Juarez, Nayla
 
@@ -28,7 +28,7 @@ _Acá va un párrafo que describa lo que es el proyecto._
 Clonar el repositorio github, desde Github Desktop o ejecutar en la terminal o CMD:
 <!-- cambia el link de abajo al de tu repositorio y BORRA ESTE COMENTARIO -->
 ```
-git clone https://github.com/ET12DE1Computacion/simpleTemplateCSharp
+git clone https://github.com/naylajuarex/fifa22
 ```
 
 ### Pre-requisitos 📋
@@ -53,8 +53,10 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Max Power** - *Desarrollo* - [Maxpower](https://github.com/maxpower)
-* **Cosme Fulanito** - *Documentación* - [Cosmefulanito](#Cosmefulanito)
+* **Jose Supanta**
+* **Ulises Guerrero** 
+* **Nicolas Conteiro**
+* **Agustina Podversich**
 
 ## Licencia 📄
 
