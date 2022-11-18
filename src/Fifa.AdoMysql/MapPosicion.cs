@@ -15,11 +15,11 @@ public class MapPosicion : Mapeador<Posicion>
                 nPosicion = fila["nPosicion"].ToString()!,
             };
 
-    public void AltaHabilidad(Posicion posicion)
+    public void AltaPosicion(Posicion posicion)
         => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
 
     public Posicion PosicionPorId(byte id)
-           => FiltrarPorPK("ubiCampo", id)!;
+        => FiltrarPorPK("ubiCampo", id)!;
 
     public void ConfigurarAltaPosicion(Posicion posicion)
     {

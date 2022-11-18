@@ -10,12 +10,14 @@ namespace Fifa.Core
         public Jugador idJugador { get; set; }
         public Futbolista idFutbolista { get; set; }
 
-        public Posesion(Jugador idJugador,Futbolista idFutbolista)
+        public Posesion(Jugador idJugador, Futbolista idFutbolista)
         {
             this.idFutbolista = idFutbolista;
             this.idJugador = idJugador;
         }
+        public Posesion()
+        {
+        }
     }
 
-   
 }

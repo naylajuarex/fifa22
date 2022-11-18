@@ -10,9 +10,10 @@ namespace Fifa.Core
         public byte ubiCampo { get; set; }
         public string nPosicion { get; set; }
 
-        public Posicion(string nPosicion)
+        public Posicion(byte ubiCampo, string nPosicion)
         {
             this.nPosicion = nPosicion;
+            this.ubiCampo = ubiCampo;
         }
 
         public Posicion()

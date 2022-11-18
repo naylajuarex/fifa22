@@ -20,7 +20,7 @@ namespace Fifa.Core
         {
 
         }
-        public Futbolista(Posicion ubiCampo, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
+        public Futbolista(byte idFutbolista, Posicion ubiCampo, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
         {
             this.ubiCampo = ubiCampo;
             this.nombre = nombre;

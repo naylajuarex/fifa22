@@ -15,13 +15,13 @@ public class MapHabilidadTest
     [Fact]
     public void AltaHabilidad()
     {
-        var habilidad = new Habilidad(1,"pancho", "meu");
-        Ado.altaHabilidad(habilidad);
+        var habilidad = new Habilidad(1, "panchito", "...");
+        Ado.AltaHabilidad(habilidad);
         Assert.Equal(1, habilidad.idHabilidad);
     }
 
     [Theory]
-    [InlineData(1, "pancho", "meu")]
+    [InlineData(1, "panchito", "...")]
     public void TraerHabilidades(byte idHabilidad, string nHabilidad, string descripcion)
     {
         var habilidades = Ado.ObtenerHabilidad();

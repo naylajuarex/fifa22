@@ -26,6 +26,8 @@ public class MapPosesion : Mapeador<Posesion>
     public void AltaPosesion(Posesion posesion)
         => EjecutarComandoCon("altaPosesion", ConfigurarAltaPosesion, posesion);
 
+    public Posesion PosesionPorId(byte id)
+        => FiltrarPorPK("idHabilidad", id)!;
     public void ConfigurarAltaPosesion(Posesion Posesion)
     {
         SetComandoSP("altaPosesion");

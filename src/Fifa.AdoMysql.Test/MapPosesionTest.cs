@@ -15,16 +15,16 @@ public class MapPosesionTest
     [Fact]
     public void AltaPosesion()
     {
-        var posesion = new Posesion (1,2);
-        Ado.altaPosesion(posesion);
-        Assert.Equal(1, posesion.idHabilidad);
+        var posesion = new Posesion();
+        Ado.AltaPosesion(posesion);
+        Assert.Equal(1, posesion.idFutbolista);
     }
 
     [Theory]
     [InlineData(1, "pancho", "meu")]
-    public void TraerHabilidades(byte idHabilidad, string nHabilidad, string descripcion)
+    public void TraerPosiciones(Jugador idJugador, Futbolista idFutbolista)
     {
-        var habilidades = Ado.ObtenerHabilidad();
-        Assert.Contains(habilidades, H => H.idHabilidad == idHabilidad && H.nHabilidad == nHabilidad && H.descripcion == descripcion);
+        var posesion = Ado.ObtenerPosesion();
+        Assert.Contains(posesion, P => P.idJugador == idJugador && P.idFutbolista == idFutbolista);
     }
 }
