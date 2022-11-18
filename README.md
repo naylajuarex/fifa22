@@ -1,7 +1,7 @@
 <!-- Completa abajo cambiando ET12DE1Computacion a tu user|organización y template a tu repo, te recomiendo usar el Find & Replace de tu editor -->
-![main build.NET5](https://github.com/ET12DE1Computacion/simpleTemplateCSharp/workflows/main-build.NET5/badge.svg?branch=main) ![main test.NET5](https://github.com/ET12DE1Computacion/simpleTemplateCSharp/workflows/main-test.NET5/badge.svg?branch=main)
-![dev build.NET5](https://github.com/ET12DE1Computacion/simpleTemplateCSharp/workflows/dev-build.NET5/badge.svg?branch=dev) ![dev test.NET5](https://github.com/ET12DE1Computacion/simpleTemplateCSharp/workflows/dev-test.NET5/badge.svg?branch=dev)
-[![Abrir en Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/ET12DE1Computacion/simpleTemplateCSharp)
+![main build.NET5](https://github.com/Naylajuarex/fifa22/workflows/main-build.NET5/badge.svg?branch=main) ![main test.NET5](https://github.com/Naylajuarex/fifa22/workflows/main-test.NET5/badge.svg?branch=main)
+![dev build.NET5](https://github.com/Naylajuarex/fifa22/workflows/dev-build.NET5/badge.svg?branch=dev) ![dev test.NET5](https://github.com/Naylajuarex/fifa22/workflows/dev-test.NET5/badge.svg?branch=dev)
+[![Abrir en Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Naylajuarex/fifa22)
 <!-- Borra este comentario y linea después haber cambiado arriba las ocurrencias de tu usuario/repo -->
 
 <h1 align="center">E.T. Nº12 D.E. 1º "Libertador Gral. José de San Martín"</h1>

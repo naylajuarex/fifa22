@@ -17,7 +17,7 @@ public class MapPosesionTest
     {
         var posesion = new Posesion(Ado.ObtenerJugadorPorId(1), Ado.ObtenerFutbolistaPorId(2));
         Ado.AltaPosesion(posesion);
-        Assert.Equal(1, posesion.idJugador);
+        Assert.Equal(1, posesion.idJugador.idJugador);
     }
 
     [Theory]
