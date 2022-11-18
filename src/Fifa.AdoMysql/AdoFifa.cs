@@ -64,7 +64,7 @@ public class AdoFifa : IAdo
         => MapPosesion.ColeccionDesdeTabla();
     public List<Posesion> ObtenerPosesion()
         => MapPosesion.ColeccionDesdeTabla();
-    public Posesion ObtenerPosesionPorId(Int16 id)
+    public Posesion ObtenerPosesionPorId(byte id)
         => MapPosesion.FiltrarPorPK("idFutbolista", id)!;
     public void AltaTransferencia(Transferencia transferencia)
     => MapTransferencia.ColeccionDesdeTabla();

@@ -16,6 +16,6 @@ namespace Fifa22.Core.Ado
 
         void AltaPosesion(Posesion posesion);
         List<Posesion> ObtenerPosesion();
-        Posesion ObtenerPosesionPorId(Int16 id);
+        Posesion ObtenerPosesionPorId(byte id);
     }
 }
