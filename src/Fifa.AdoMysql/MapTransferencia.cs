@@ -5,8 +5,22 @@ using Fifa.Core;
 
 namespace Fifa.AdoMysql;
 public class MapTransferencia : Mapeador<Transferencia>
-{
+{   
+    public MapJugador MapJugador {get; set;}
+    public MapFutbolista MapFutbolista {get; set;}
     public MapTransferencia(AdoAGBD ado) : base(ado) => Tabla = "Transferencia";
+
+    public MapTransferencia (MapJugador mapJugador) : this(mapJugador.AdoAGBD)
+    {
+        MapJugador = mapJugador;
+    }
+
+     public MapTransferencia (MapFutbolista mapFutbolista) : this(mapFutbolista.AdoAGBD)
+    {
+        MapFutbolista = mapFutbolista;
+    }
+
+
     public override Transferencia ObjetoDesdeFila(DataRow fila)
             => new Transferencia()
             {
@@ -14,8 +28,8 @@ public class MapTransferencia : Mapeador<Transferencia>
                 fyhPublicado = Convert.ToDateTime(fila["fyhPublicado"]),
                 fyhTerminado = Convert.ToDateTime(fila["fyhTerminado"]),
                 idVendedor = Convert.ToUInt16(fila["idVendedor"]),
-                idComprador = Convert.ToUInt16(fila["idComprador"]),
+                idComprador = MapJugador.JugadorPorId(Convert.ToInt16(fila["idComprador"])),
                 precio = Convert.ToUInt16(fila["precio"]),
-                idFutbolista = Convert.ToByte(fila["idFutbolista"]),
+                idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"])),
             };
 }

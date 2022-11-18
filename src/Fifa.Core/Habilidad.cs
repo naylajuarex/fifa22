@@ -11,10 +11,11 @@ namespace Fifa.Core
         public string nHabilidad { get; set; }
         public string descripcion { get; set; }
 
-        public Habilidad(string nHabilidad, string descripcion)
+        public Habilidad(byte idHabilidad, string nHabilidad, string descripcion)
         {
             this.nHabilidad = nHabilidad;
             this.descripcion = descripcion;
+            this.idHabilidad = idHabilidad;
         }
 
         public Habilidad()
