@@ -15,13 +15,13 @@ public class MapPosesionTest
     [Fact]
     public void AltaPosesion()
     {
-        var posesion = new Posesion();
+        var posesion = new Posesion(Ado.ObtenerJugadorPorId(1), Ado.ObtenerFutbolistaPorId(2));
         Ado.AltaPosesion(posesion);
-        Assert.Equal(1, posesion.idFutbolista);
+        Assert.Equal(1, posesion.idJugador);
     }
 
     [Theory]
-    [InlineData(1, "pancho", "meu")]
+    [InlineData(1, 2)]
     public void TraerPosiciones(Jugador idJugador, Futbolista idFutbolista)
     {
         var posesion = Ado.ObtenerPosesion();

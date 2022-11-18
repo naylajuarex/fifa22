@@ -39,12 +39,17 @@ public class AdoFifa : IAdo
 
     public List<Habilidad> ObtenerHabilidad()
         => MapHabilidad.ColeccionDesdeTabla();
+    public Habilidad ObtenerHabilidadPorId(byte idHabilidad)
+        => MapHabilidad.FiltrarPorPK("idHabilidad", idHabilidad)!;
 
     public void AltaPosicion(Posicion posicion)
         => MapPosicion.AltaPosicion(posicion);
 
     public List<Posicion> ObtenerPosicion()
         => MapPosicion.ColeccionDesdeTabla();
+
+    public Posicion ObtenerPosicionPorId(byte ubiCampo)
+        => MapPosicion.FiltrarPorPK("ubiCampo", ubiCampo)!;
 
     public void AltaFutbolistahabilidad(FutbolistaHabilidad futbolistaHabilidad)
         => MapFutbolistaHabilidad.ColeccionDesdeTabla();

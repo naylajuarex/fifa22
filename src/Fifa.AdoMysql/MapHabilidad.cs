@@ -18,8 +18,8 @@ public class MapHabilidad : Mapeador<Habilidad>
     public void AltaHabilidad(Habilidad habilidad)
         => EjecutarComandoCon("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 
-    public Habilidad HabilidadPorId(byte id)
-        => FiltrarPorPK("idHabilidad", id)!;
+    public Habilidad HabilidadPorId(byte idHabilidad)
+        => FiltrarPorPK("idHabilidad", idHabilidad)!;
 
     public void ConfigurarAltaHabilidad(Habilidad habilidad)
     {

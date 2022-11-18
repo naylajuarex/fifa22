@@ -14,8 +14,10 @@ namespace Fifa22.Core.Ado
         List<Futbolista> ObtenerFutbolista();
         Futbolista ObtenerFutbolistaPorId(Int16 id);
 
-        void AltaPosesion(Posesion posesion);
-        List<Posesion> ObtenerPosesion();
-        Posesion ObtenerPosesionPorId(byte id);
+        void AltaPosicion(Posicion posicion);
+        List<Posicion> ObtenerPosicion();
+        Posicion ObtenerPosicionPorId(byte id);
+
+
     }
 }

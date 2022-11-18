@@ -15,7 +15,7 @@ public class MapFutbolistaHabilidadTest
     [Fact]
     public void AltaFutbolistahabilidad()
     {
-        var futbolistahabilidad = new FutbolistaHabilidad();
+        var futbolistahabilidad = new FutbolistaHabilidad(1, Ado.ObtenerHabilidadPorId(2));
         Ado.AltaFutbolistahabilidad(futbolistahabilidad);
         Assert.Equal(1, futbolistahabilidad.idFutbolista);
     }

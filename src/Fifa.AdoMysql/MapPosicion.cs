@@ -18,8 +18,8 @@ public class MapPosicion : Mapeador<Posicion>
     public void AltaPosicion(Posicion posicion)
         => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
 
-    public Posicion PosicionPorId(byte id)
-        => FiltrarPorPK("ubiCampo", id)!;
+    public Posicion PosicionPorId(byte ubiCampo)
+        => FiltrarPorPK("ubiCampo", ubiCampo)!;
 
     public void ConfigurarAltaPosicion(Posicion posicion)
     {
