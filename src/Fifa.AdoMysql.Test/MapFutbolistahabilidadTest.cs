@@ -22,9 +22,9 @@ public class MapFutbolistaHabilidadTest
 
     [Theory]
     [InlineData(1, 2)]
-    public void TraerFutbolistahabilidad(int idFutbolista, Habilidad idHabilidad)
+    public void TraerFutbolistahabilidad(int idFutbolista, byte idHabilidad)
     {
         var futbolistahabilidad = Ado.ObtenerFutbolistahabilidad();
-        Assert.Contains(futbolistahabilidad, F => F.idFutbolista == idFutbolista && F.idHabilidad == idHabilidad);
+        Assert.Contains(futbolistahabilidad, F => F.idFutbolista == idFutbolista && F.idHabilidad.idHabilidad == idHabilidad);
     }
 }

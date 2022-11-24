@@ -22,10 +22,11 @@ public class MapFutbolistaTest
     }
 
     [Theory]
-    [InlineData(1, 3)]
-    public void TraerFutbolista(byte idFutbolista, Posicion ubiCampo)
+    [InlineData(1, 1)]
+    public void TraerFutbolista(byte idFutbolista, byte ubiCampo)
     {
         var futbolista = Ado.ObtenerFutbolista();
-        Assert.Contains(futbolista, F => F.idFutbolista == idFutbolista && F.ubiCampo == ubiCampo);
+
+        Assert.Contains(futbolista, F => F.idFutbolista == idFutbolista && F.ubiCampo.ubiCampo == ubiCampo);
     }
 }

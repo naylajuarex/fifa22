@@ -19,8 +19,8 @@ public class MapPosesion : Mapeador<Posesion>
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-                idJugador = MapJugador.JugadorPorId(Convert.ToInt16(fila["idJugador"])),
-                idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"])),
+                idJugador = Convert.ToByte(fila["idJugador"]),
+                idFutbolista = Convert.ToByte(fila["idFutbolista"]),
             };
 
     public void AltaPosesion(Posesion posesion)
@@ -33,12 +33,12 @@ public class MapPosesion : Mapeador<Posesion>
         SetComandoSP("altaPosesion");
 
         BP.CrearParametroSalida("unidJugador")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(Posesion.idJugador)
             .AgregarParametro();
 
         BP.CrearParametro("unidFutbolista")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(Posesion.idFutbolista)
             .AgregarParametro();
 

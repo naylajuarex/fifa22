@@ -8,13 +8,13 @@ namespace Fifa.Core
     public class Transferencia
     {
         public DateTime fyhPublicado { get; set; }
-        public Jugador idVendedor { get; set; }
-        public Jugador idComprador { get; set; }
+        public byte idVendedor { get; set; }
+        public byte idComprador { get; set; }
         public uint precio { get; set; }
         public DateTime fyhTerminado { get; set; }
-        public Futbolista idFutbolista { get; set; }
+        public byte idFutbolista { get; set; }
         public Transferencia() { }
-        public Transferencia(DateTime fyhPublicdo, DateTime fyhTerminado, Jugador idVendedor, Jugador idComprador, Futbolista idFutbolista, uint precio)
+        public Transferencia(DateTime fyhPublicdo, DateTime fyhTerminado, byte idVendedor, byte idComprador, byte idFutbolista, uint precio)
         {
             this.fyhPublicado = fyhPublicdo;
             this.fyhTerminado = fyhTerminado;

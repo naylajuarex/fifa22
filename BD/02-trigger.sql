@@ -9,8 +9,7 @@
 DELIMITER $$ 
 
 DROP TRIGGER IF EXISTS NoPosee $$
-CREATE TRIGGER
-    NoPosee BEFORE
+CREATE TRIGGER NoPosee BEFORE
 INSERT
     ON Transferencia FOR EACH ROW BEGIN IF (
         NOT EXISTS (
@@ -47,7 +46,7 @@ END $$
 DELIMITER $$
 
 DROP TRIGGER
-    IF EXISTS TienePosesion $$
+    IF EXISTS BefInsTienePosesion $$
 CREATE TRIGGER
     BefInsTienePosesion BEFORE
 UPDATE

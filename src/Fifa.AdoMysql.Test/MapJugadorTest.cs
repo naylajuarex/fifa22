@@ -1,5 +1,6 @@
+using et12.edu.ar.AGBD.Mapeadores;
 using et12.edu.ar.AGBD.Ado;
-using Fifa.AdoMysql;
+using System.Data;
 using Fifa.Core;
 
 namespace Fifa.AdoMysql.Test;

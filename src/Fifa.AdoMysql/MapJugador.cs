@@ -10,7 +10,7 @@ public class MapJugador : Mapeador<Jugador>
     public override Jugador ObjetoDesdeFila(DataRow fila)
             => new Jugador()
             {
-                idJugador = Convert.ToUInt16(fila["idJugador"]),
+                idJugador = Convert.ToByte(fila["idJugador"]),
                 Nombre = fila["nombre"].ToString()!,
                 Apellido = fila["apellido"].ToString()!,
                 Usuario = fila["usuario"].ToString()!,
@@ -21,15 +21,15 @@ public class MapJugador : Mapeador<Jugador>
     public void AltaJugador(Jugador jugador)
         => EjecutarComandoCon("altaJugador", ConfigurarAltaJugador, PostAltaJugador, jugador);
 
-        public Jugador JugadorPorId(Int16 id)
-            => FiltrarPorPK("idJugador", id)!;
+    public Jugador JugadorPorId(byte id)
+        => FiltrarPorPK("idJugador", id)!;
 
     public void ConfigurarAltaJugador(Jugador jugador)
     {
         SetComandoSP("altaJugador");
 
         BP.CrearParametroSalida("unidJugador")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(jugador.idJugador)
             .AgregarParametro();
 
