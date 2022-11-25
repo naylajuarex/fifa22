@@ -145,17 +145,20 @@ CREATE PROCEDURE
     publicar (
         unidVendedor MEDIUMINT UNSIGNED,
         unidFutbolista SMALLINT UNSIGNED,
+        unfyhPublicado DATETIME,
         unprecio MEDIUMINT UNSIGNED
     ) BEGIN
 INSERT INTO
     Transferencia (
         idVendedor,
         idFutbolista,
+        fyhPublicado,
         precio
     )
 VALUES (
         unidVendedor,
         unidFutbolista,
+        unfyhPublicado,
         unprecio
     );
 
