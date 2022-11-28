@@ -1,5 +1,4 @@
--- Active: 1646654372192@@127.0.0.1@3306@fulbo12
-
+-- Active: 1663429579947@@127.0.0.1@3306@fifa
 DROP DATABASE IF EXISTS fifa;
 
 CREATE DATABASE fifa;
@@ -66,12 +65,13 @@ CREATE TABLE
     Transferencia(
         fyhPublicado DATETIME NOT NULL,
         idVendedor MEDIUMINT UNSIGNED NOT NULL,
-        idComprador MEDIUMINT UNSIGNED NOT NULL,
+        idComprador MEDIUMINT UNSIGNED NULL,
         precio MEDIUMINT UNSIGNED NOT NULL,
-        fyhTerminado DATETIME NOT NULL,
+        fyhTerminado DATETIME NULL,
         idFutbolista SMALLINT UNSIGNED NOT NULL,
         PRIMARY KEY (fyhPublicado),
         CONSTRAINT fk_Transferencia_idFutbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista),
-        CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (idJugador),
-        CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (idJugador)
+        CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (IdJugador),
+        CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (IdJugador)
     );
+    

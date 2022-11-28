@@ -135,61 +135,48 @@ INSERT INTO
 VALUES (unidFutbolista, unidHabilidad);
 
 END $$
-/*Hacer un SP llamado ‘publicar’ que recibe como parámetro un identificador de jugador, un identificador de futbolista y la cantidad de monedas a pagar. Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación de una transferencia junto con la identificación del comprador, el SP tiene que cerrar la transferencia.*/
+/*Hacer un SP llamado ‘publicar’ que recibe como parámetro un identificador de jugador, un identificador de futbolista y la cantidad de monedas a pagar. 
+Hacer un SP llamado ‘comprar’ que reciba como parámetro la identificación de una transferencia junto con la identificación del comprador, el SP tiene que cerrar la transferencia.*/
 
 DELIMITER $$
 
-DROP PROCEDURE
-    IF EXISTS publicar $$
-CREATE PROCEDURE
-    publicar (
+DROP PROCEDURE IF EXISTS publicar $$
+CREATE PROCEDURE publicar (
         unidVendedor MEDIUMINT UNSIGNED,
         unidFutbolista SMALLINT UNSIGNED,
         unfyhPublicado DATETIME,
-        unprecio MEDIUMINT UNSIGNED
-    ) BEGIN
-INSERT INTO
-    Transferencia (
-        idVendedor,
-        idFutbolista,
-        fyhPublicado,
-        precio
-    )
-VALUES (
-        unidVendedor,
-        unidFutbolista,
-        unfyhPublicado,
-        unprecio
-    );
-
+        unprecio MEDIUMINT UNSIGNED ) 
+BEGIN
+    INSERT INTO Transferencia (
+            idVendedor,
+            idFutbolista,
+            fyhPublicado,
+            precio )
+    VALUES ( unidVendedor,
+            unidFutbolista,
+            unfyhPublicado,
+            unprecio );
 END $$
 
 DELIMITER $$
 
-DROP PROCEDURE
-    IF EXISTS comprar $$
-CREATE PROCEDURE
-    comprar (
-        unfyhPublicado DATETIME,
-        unidComprador MEDIUMINT UNSIGNED
-    ) BEGIN
-INSERT INTO
-    Transferencia (fyhPublicado, idComprador)
-VALUES (unfyhPublicado, unidComprador);
+DROP PROCEDURE IF EXISTS comprar $$
+CREATE PROCEDURE comprar (unfyhPublicado DATETIME,
+    unfyhTerminado DATETIME, unidComprador MEDIUMINT UNSIGNED ) 
+BEGIN
+    UPDATE  Transferencia
+    SET     idComprador = unidComprador, fyhTerminado= unfyhTerminado
+    WHERE   fyhPublicado = unfyhPublicado ;
 
 END $$
 /*Realizar el SP ‘transferenciasActividas’ que reciba por parámetro la identificación de un futbolista y devuelva un listado de las transferencias activas (aquellas no exitosas) donde se encuentra ese futbolista, ordenadas por fecha de publicación ascendentemente.*/
 
 DELIMITER $$
 
-DROP PROCEDURE
-    IF EXISTS transferenciasActividas $$
-CREATE PROCEDURE
-    transferenciasActividas(
-        unidFutbolista MEDIUMINT UNSIGNED
-    ) BEGIN
+DROP PROCEDURE IF EXISTS transferenciasActividas $$
+CREATE PROCEDURE transferenciasActividas( unidFutbolista MEDIUMINT UNSIGNED) BEGIN
 SELECT idFutbolista
-FROM Tranferencia
+FROM Transferencia
 WHERE
     idFutbolista = unIdFutbolista
     AND fyhPublicado < CURDATE()

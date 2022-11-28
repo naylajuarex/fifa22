@@ -10,9 +10,9 @@ DELIMITER $$
 
 DROP TRIGGER IF EXISTS NoPosee $$
 CREATE TRIGGER NoPosee BEFORE
-INSERT
-    ON Transferencia FOR EACH ROW BEGIN IF (
-        NOT EXISTS (
+INSERT ON Transferencia FOR EACH ROW 
+BEGIN 
+    IF ( NOT EXISTS (
             SELECT *
             FROM Posesion
             WHERE
