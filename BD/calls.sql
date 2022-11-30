@@ -1,11 +1,18 @@
--- Active: 1663429579947@@127.0.0.1@3306@fifa
+-- Active: 1646654372192@@127.0.0.1@3306@fifa
+
 use fifa;
 
-CALL altaHabilidad (24, "...", "chilena");
+CALL
+    altaHabilidad (24, "...", "chilena");
+
+CALL
+    altaHabilidad(56, "...", "bicicleta");
 
 CALL
     altaPosicion (12, "Delantero");
 
+CALL
+    altaPosicion (19, "Defensa")
 CALL
     altaFutbolista (
         14,
@@ -25,7 +32,7 @@ CALL
         "hola",
         '1999/02/23',
         "esta",
-        12,
+        19,
         74,
         85,
         60,
@@ -33,7 +40,7 @@ CALL
     );
 
 CALL
-    altaJugador ( 
+    altaJugador (
         1,
         "Marco",
         "Antonio",
@@ -41,8 +48,9 @@ CALL
         "87654321",
         1000
     );
+
 CALL
-    altaJugador ( 
+    altaJugador (
         2,
         "Julio",
         "Cesar",
@@ -53,8 +61,13 @@ CALL
 
 CALL altaPosesion (2, 15);
 
+CALL altaPosesion (1, 14);
+
 CALL
     altaFutbolistaHabilidad (14, 24);
+
+CALL
+    altaFutbolistaHabilidad (15, 56);
 
 CALL
     transferenciasActividas (14);
@@ -63,7 +76,7 @@ CALL
     publicar (2, 15, '2020/04/17', 200);
 
 CALL
-    comprar ('2020/04/17', '2020/05/17', 1 );
+    comprar ('2020/04/17', '2020/05/17', 1);
 
 CALL
     transferenciasActividas (2);
