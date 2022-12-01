@@ -27,12 +27,12 @@ public class MapPosesion : Mapeador<Posesion>
         => EjecutarComandoCon("altaPosesion", ConfigurarAltaPosesion, posesion);
 
     public Posesion PosesionPorId(byte id)
-        => FiltrarPorPK("unidJugador", id)!;
+        => FiltrarPorPK("idJugador", id)!;
     public void ConfigurarAltaPosesion(Posesion Posesion)
     {
         SetComandoSP("altaPosesion");
 
-        BP.CrearParametroSalida("unidJugador")
+        BP.CrearParametro("unidJugador")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(Posesion.idJugador.idJugador)
             .AgregarParametro();

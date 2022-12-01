@@ -3,12 +3,13 @@
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
-CREATE PROCEDURE altaFutbolista ( unidFutbolista INT UNSIGNED, unnombre VARCHAR(30),unnacimiento DATETIME,
+CREATE PROCEDURE altaFutbolista ( OUT unidFutbolista INT UNSIGNED, unnombre VARCHAR(30),unnacimiento DATETIME,
         unapellido VARCHAR(25),unubiCampo TINYINT UNSIGNED,unvelocidad TINYINT UNSIGNED,unremate TINYINT UNSIGNED,
         unpase TINYINT UNSIGNED,undefensa TINYINT UNSIGNED) 
 BEGIN
-    INSERT INTO Futbolista (idFutbolista,nombre,nacimiento,apellido,ubiCampo,velocidad,remate,pase,defensa)
-    VALUES(unidFutbolista,unnombre,unnacimiento,unapellido,unubiCampo,unvelocidad,unremate,unpase,undefensa);
+    INSERT INTO Futbolista (nombre,nacimiento,apellido,ubiCampo,velocidad,remate,pase,defensa)
+    VALUES(unnombre,unnacimiento,unapellido,unubiCampo,unvelocidad,unremate,unpase,undefensa);
+    SET unidFutbolista = last_insert_id();
 END $$ 
 
 DELIMITER $$
@@ -61,7 +62,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS publicar $$
 CREATE PROCEDURE publicar (unidVendedor MEDIUMINT UNSIGNED,unidFutbolista SMALLINT UNSIGNED,
-         unfyhPublicado DATETIME,unprecio MEDIUMINT UNSIGNED ) 
+        unfyhPublicado DATETIME,unprecio MEDIUMINT UNSIGNED ) 
 BEGIN
     INSERT INTO Transferencia (idVendedor,idFutbolista,fyhPublicado, precio )
     VALUES ( unidVendedor, unidFutbolista,unfyhPublicado,unprecio );
@@ -76,7 +77,6 @@ BEGIN
     UPDATE  Transferencia
     SET     idComprador = unidComprador, fyhTerminado= unfyhTerminado
     WHERE   fyhPublicado = unfyhPublicado ;
-
 END $$
 /*Realizar el SP ‘transferenciasActividas’ que reciba por parámetro la identificación de un futbolista y devuelva un listado de las transferencias activas (aquellas no exitosas) donde se encuentra ese futbolista, ordenadas por fecha de publicación ascendentemente.*/
 

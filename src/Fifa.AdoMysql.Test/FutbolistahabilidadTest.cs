@@ -15,13 +15,13 @@ public class MapFutbolistaHabilidadTest
     [Fact]
     public void AltaFutbolistahabilidad()
     {
-        var futbolistahabilidad = new FutbolistaHabilidad(Ado.ObtenerFutbolistaPorId(14), Ado.ObtenerHabilidadPorId(56));
+        var futbolistahabilidad = new FutbolistaHabilidad(Ado.ObtenerFutbolistaPorId(1), Ado.ObtenerHabilidadPorId(56));
         Ado.AltaFutbolistahabilidad(futbolistahabilidad);
-        Assert.Equal(14, futbolistahabilidad.idFutbolista.idFutbolista);
+        Assert.Equal(1, futbolistahabilidad.idFutbolista.idFutbolista);
     }
 
     [Theory]
-    [InlineData(14,24)]
+    [InlineData(1,24)]
     public void TraerFutbolistahabilidad(int idFutbolista, byte idHabilidad)
     {
         var futbolistahabilidad = Ado.ObtenerFutbolistahabilidad();

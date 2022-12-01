@@ -17,9 +17,14 @@ public class MapFutbolistaTest
     public void AltaFutbolista()
     {
         DateTime ahora = new DateTime(1995, 04, 18);
-        var futbolista = new Futbolista(1, Ado.ObtenerPosicionPorId(12), "Roberto", "Bernoulli", ahora, 92, 84, 86, 93);
+        var delantero = Ado.ObtenerPosicionPorId(12);
+        var futbolista = new Futbolista(
+            idFutbolista : 0, ubiCampo: delantero,
+            nombre : "Roberto", apellido: "Bernoulli",
+            nacimiento : ahora, velocidad: 92, pase: 84,
+            remate: 86, defensa: 93);
         Ado.AltaFutbolista(futbolista);
-        Assert.Equal(1, futbolista.idFutbolista);
+        Assert.Equal(3, futbolista.idFutbolista);
     }
 
     [Theory]

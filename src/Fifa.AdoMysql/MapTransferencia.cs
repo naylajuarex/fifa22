@@ -32,33 +32,23 @@ public class MapTransferencia : Mapeador<Transferencia>
             };
 
     public void AltaTransferencia(Transferencia transferencia)
-=> EjecutarComandoCon("altaTransferencia", ConfigurarAltaTransferencia, PostAltaTransferencia, transferencia);
+=> EjecutarComandoCon("publicar", ConfigurarAltaTransferencia, PostAltaTransferencia, transferencia);
 
     public Transferencia TransferenciaPorId(DateTime fyhPublicado)
         => FiltrarPorPK("fyhPublicado", fyhPublicado)!;
 
     public void ConfigurarAltaTransferencia(Transferencia transferencia)
     {
-        SetComandoSP("altaTransferencia");
+        SetComandoSP("publicar");
 
         BP.CrearParametroSalida("unfyhPublicado")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
             .SetValor(transferencia.fyhPublicado)
             .AgregarParametro();
 
-        BP.CrearParametro("unfyhTerminado")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
-            .SetValor(transferencia.fyhTerminado)
-            .AgregarParametro();
-
         BP.CrearParametro("unidVendedor")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(transferencia.idVendedor.idJugador)
-            .AgregarParametro();
-
-        BP.CrearParametro("unidComprador")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(transferencia.idComprador.idJugador)
             .AgregarParametro();
 
         BP.CrearParametro("unprecio")

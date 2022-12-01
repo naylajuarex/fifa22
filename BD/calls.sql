@@ -14,9 +14,10 @@ CALL
 CALL
     altaPosicion (19, "Defensa");
 
+SET @FUTBOLISTA = NULL;
 CALL
     altaFutbolista (
-        14,
+        @FUTBOLISTA,
         "Pepe",
         '1999/02/23',
         "Sanchez",
@@ -29,7 +30,7 @@ CALL
 
 CALL
     altaFutbolista (
-        15,
+        @FUTBOLISTA,
         "hola",
         '1999/02/23',
         "esta",
@@ -64,21 +65,21 @@ CALL
         200
     );
 
-CALL altaPosesion (2, 15);
+CALL altaPosesion (1, 2);
 
-CALL altaPosesion (1, 14);
-
-CALL
-    altaFutbolistaHabilidad (14, 24);
+CALL altaPosesion (2, 1);
 
 CALL
-    altaFutbolistaHabilidad (15, 56);
+    altaFutbolistaHabilidad (1, 24);
 
 CALL
-    transferenciasActividas (14);
+    altaFutbolistaHabilidad (2, 56);
 
 CALL
-    publicar (2, 15, '2020/04/17', 200);
+    transferenciasActividas (1);
+
+CALL
+    publicar (2, 1, '2020/04/17', 200);
 
 CALL
     comprar ('2020/04/17', '2020/05/17', 1);

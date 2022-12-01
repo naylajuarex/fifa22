@@ -33,7 +33,7 @@ CREATE TABLE
 
 CREATE TABLE
     Futbolista(
-        idFutbolista SMALLINT UNSIGNED NOT NULL,
+        idFutbolista SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL,
         ubiCampo TINYINT UNSIGNED NOT NULL,
         nombre VARCHAR(30) NOT NULL,
         apellido VARCHAR(25) NOT NULL,
@@ -48,16 +48,18 @@ CREATE TABLE
 
 CREATE TABLE
     Posesion(
-        idJugador MEDIUMINT NOT NULL,
+        idJugador MEDIUMINT UNSIGNED NOT NULL,
         idFutbolista SMALLINT UNSIGNED NOT NULL,
-        PRIMARY KEY (idJugador, idFutbolista)
+        PRIMARY KEY (idJugador, idFutbolista),
+        CONSTRAINT fk_Posesion_idJugador FOREIGN KEY (idJugador) REFERENCES Jugador (idJugador),
+        CONSTRAINT fk_Posesion_idFutbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista)
     );
 
 CREATE TABLE
     FutbolistaHabilidad(
         idFutbolista SMALLINT UNSIGNED NOT NULL,
         idHabilidad TINYINT UNSIGNED NOT NULL,
-        PRIMARY KEY (idFutbolista),
+        PRIMARY KEY (idFutbolista,idHabilidad),
         CONSTRAINT fk_FutbolistaHabilidad_idHabilidad FOREIGN KEY (idHabilidad) REFERENCES Habilidad (idHabilidad)
     );
 

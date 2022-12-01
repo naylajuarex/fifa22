@@ -6,7 +6,7 @@ namespace Fifa22.Core.Ado
     {
         void AltaJugador(Jugador jugador);
         List<Jugador> ObtenerJugador();
-        Jugador ObtenerJugadorPorId(Int16 id);
+        Jugador ObtenerJugadorPorId(byte id);
         void AltaHabilidad(Habilidad habilidad);
         List<Habilidad> ObtenerHabilidad();
 

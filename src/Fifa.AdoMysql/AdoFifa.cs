@@ -31,7 +31,7 @@ public class AdoFifa : IAdo
     public List<Jugador> ObtenerJugador()
         => MapJugador.ColeccionDesdeTabla();
 
-    public Jugador ObtenerJugadorPorId(Int16 id)
+    public Jugador ObtenerJugadorPorId(byte id)
         => MapJugador.FiltrarPorPK("idJugador", id)!;
 
     public void AltaHabilidad(Habilidad habilidad)
@@ -52,13 +52,13 @@ public class AdoFifa : IAdo
         => MapPosicion.FiltrarPorPK("ubiCampo", ubiCampo)!;
 
     public void AltaFutbolistahabilidad(FutbolistaHabilidad futbolistaHabilidad)
-        => MapFutbolistaHabilidad.ColeccionDesdeTabla();
+        => MapFutbolistaHabilidad.AltaFutbolistaHabilidad(futbolistaHabilidad);
 
     public List<FutbolistaHabilidad> ObtenerFutbolistahabilidad()
         => MapFutbolistaHabilidad.ColeccionDesdeTabla();
 
     public void AltaFutbolista(Futbolista futbolista)
-        => MapFutbolista.ColeccionDesdeTabla();
+        => MapFutbolista.AltaFutbolista(futbolista);
 
     public List<Futbolista> ObtenerFutbolista()
         => MapFutbolista.ColeccionDesdeTabla();
@@ -66,13 +66,13 @@ public class AdoFifa : IAdo
         => MapFutbolista.FiltrarPorPK("idFutbolista", id)!;
 
     public void AltaPosesion(Posesion posesion)
-        => MapPosesion.ColeccionDesdeTabla();
+        => MapPosesion.AltaPosesion(posesion);
     public List<Posesion> ObtenerPosesion()
         => MapPosesion.ColeccionDesdeTabla();
     public Posesion ObtenerPosesionPorId(byte id)
         => MapPosesion.FiltrarPorPK("idFutbolista", id)!;
     public void AltaTransferencia(Transferencia transferencia)
-    => MapTransferencia.ColeccionDesdeTabla();
+    => MapTransferencia.AltaTransferencia(transferencia);
     public List<Transferencia> ObtenerTransferencia()
         => MapTransferencia.ColeccionDesdeTabla();
 

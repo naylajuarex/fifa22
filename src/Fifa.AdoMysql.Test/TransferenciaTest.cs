@@ -17,7 +17,7 @@ public class MapTransferenciaTest
     {
         DateTime ahora = new DateTime(2022, 11, 18);
         DateTime antes = new DateTime(2022, 10, 18);
-        var transferencia = new Transferencia(ahora,antes , Ado.ObtenerJugadorPorId(2), Ado.ObtenerJugadorPorId(1), Ado.ObtenerFutbolistaPorId(15), 430);
+        var transferencia = new Transferencia(ahora,antes , Ado.ObtenerJugadorPorId(2), Ado.ObtenerJugadorPorId(1), Ado.ObtenerFutbolistaPorId(2), 430);
         Ado.AltaTransferencia(transferencia);
         Assert.Equal(ahora, transferencia.fyhPublicado);
     }
