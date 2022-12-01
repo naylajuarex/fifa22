@@ -1,4 +1,5 @@
 -- Active: 1646654372192@@127.0.0.1@3306@fifa
+
 DROP DATABASE IF EXISTS fifa;
 
 CREATE DATABASE fifa;
@@ -59,7 +60,7 @@ CREATE TABLE
     FutbolistaHabilidad(
         idFutbolista SMALLINT UNSIGNED NOT NULL,
         idHabilidad TINYINT UNSIGNED NOT NULL,
-        PRIMARY KEY (idFutbolista,idHabilidad),
+        PRIMARY KEY (idFutbolista, idHabilidad),
         CONSTRAINT fk_FutbolistaHabilidad_idHabilidad FOREIGN KEY (idHabilidad) REFERENCES Habilidad (idHabilidad)
     );
 
@@ -76,4 +77,3 @@ CREATE TABLE
         CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (IdJugador),
         CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (IdJugador)
     );
-    

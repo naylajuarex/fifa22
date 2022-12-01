@@ -14,12 +14,10 @@ namespace Fifa.Core
         public DateTime fyhTerminado { get; set; }
         public Futbolista idFutbolista { get; set; }
         public Transferencia() { }
-        public Transferencia(DateTime fyhPublicado, DateTime fyhTerminado, Jugador idVendedor, Jugador idComprador, Futbolista idFutbolista, uint precio)
+        public Transferencia(DateTime fyhPublicado, Jugador idVendedor, Futbolista idFutbolista, uint precio)
         {
             this.fyhPublicado = fyhPublicado;
-            this.fyhTerminado = fyhTerminado;
             this.idVendedor = idVendedor;
-            this.idComprador = idComprador;
             this.idFutbolista = idFutbolista;
             this.precio = precio;
         }

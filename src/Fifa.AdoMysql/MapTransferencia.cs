@@ -41,7 +41,7 @@ public class MapTransferencia : Mapeador<Transferencia>
     {
         SetComandoSP("publicar");
 
-        BP.CrearParametroSalida("unfyhPublicado")
+        BP.CrearParametro("unfyhPublicado")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
             .SetValor(transferencia.fyhPublicado)
             .AgregarParametro();
