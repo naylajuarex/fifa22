@@ -32,7 +32,7 @@ public class MapTransferencia : Mapeador<Transferencia>
             };
 
     public void AltaTransferencia(Transferencia transferencia)
-=> EjecutarComandoCon("publicar", ConfigurarAltaTransferencia, PostAltaTransferencia, transferencia);
+=> EjecutarComandoCon("publicar", ConfigurarAltaTransferencia, transferencia);
 
     public Transferencia TransferenciaPorId(DateTime fyhPublicado)
         => FiltrarPorPK("fyhPublicado", fyhPublicado)!;
@@ -60,11 +60,5 @@ public class MapTransferencia : Mapeador<Transferencia>
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(transferencia.idFutbolista.idFutbolista)
             .AgregarParametro();
-    }
-
-    public void PostAltaTransferencia(Transferencia transferencia)
-    {
-        var paramfyhPublicado = GetParametro("unfyhPublicado");
-        transferencia.fyhPublicado = Convert.ToDateTime(paramfyhPublicado.Value);
     }
 }

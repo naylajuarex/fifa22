@@ -19,16 +19,16 @@ public class MapFutbolistaTest
         DateTime ahora = new DateTime(1995, 04, 18);
         var delantero = Ado.ObtenerPosicionPorId(12);
         var futbolista = new Futbolista(
-            idFutbolista : 0, ubiCampo: delantero,
-            nombre : "Roberto", apellido: "Bernoulli",
-            nacimiento : ahora, velocidad: 92, pase: 84,
+            idFutbolista: 0, ubiCampo: delantero,
+            nombre: "Roberto", apellido: "Bernoulli",
+            nacimiento: ahora, velocidad: 92, pase: 84,
             remate: 86, defensa: 93);
         Ado.AltaFutbolista(futbolista);
         Assert.Equal(3, futbolista.idFutbolista);
     }
 
     [Theory]
-    [InlineData(14,"Pepe")]
+    [InlineData(1, "Pepe")]
     public void TraerFutbolista(byte idFutbolista, string nombre)
     {
         var futbolista = Ado.ObtenerFutbolista();

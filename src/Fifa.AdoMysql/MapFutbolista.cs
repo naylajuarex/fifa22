@@ -38,7 +38,7 @@ public class MapFutbolista : Mapeador<Futbolista>
     {
         SetComandoSP("altaFutbolista");
 
-        BP.CrearParametro("unidFutbolista")
+        BP.CrearParametroSalida("unidFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.idFutbolista)
             .AgregarParametro();
