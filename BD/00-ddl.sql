@@ -1,5 +1,4 @@
 -- Active: 1646654372192@@127.0.0.1@3306@fifa
-
 DROP DATABASE IF EXISTS fifa;
 
 CREATE DATABASE fifa;
@@ -38,7 +37,7 @@ CREATE TABLE
         ubiCampo TINYINT UNSIGNED NOT NULL,
         nombre VARCHAR(30) NOT NULL,
         apellido VARCHAR(25) NOT NULL,
-        nacimiento DATE NOT NULL,
+        nacimiento DATETIME NOT NULL,
         velocidad TINYINT UNSIGNED NOT NULL,
         remate TINYINT UNSIGNED NOT NULL,
         pase TINYINT UNSIGNED NOT NULL,
@@ -75,3 +74,4 @@ CREATE TABLE
         CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (IdJugador),
         CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (IdJugador)
     );
+    

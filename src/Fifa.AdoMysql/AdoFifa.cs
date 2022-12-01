@@ -19,9 +19,9 @@ public class AdoFifa : IAdo
         MapJugador = new MapJugador(adoAGBD);
         MapHabilidad = new MapHabilidad(adoAGBD);
         MapPosicion = new MapPosicion(adoAGBD);
-        MapFutbolistaHabilidad = new MapFutbolistaHabilidad(adoAGBD);
-        MapFutbolista = new MapFutbolista(adoAGBD);
-        MapPosesion = new MapPosesion(adoAGBD);
+        MapFutbolista = new MapFutbolista(MapPosicion);
+        MapFutbolistaHabilidad = new MapFutbolistaHabilidad(MapHabilidad,MapFutbolista);
+        MapPosesion = new MapPosesion(MapJugador,MapFutbolista);
         MapTransferencia = new MapTransferencia(MapJugador, MapJugador, MapFutbolista);
     }
 
@@ -62,7 +62,7 @@ public class AdoFifa : IAdo
 
     public List<Futbolista> ObtenerFutbolista()
         => MapFutbolista.ColeccionDesdeTabla();
-    public Futbolista ObtenerFutbolistaPorId(Int16 id)
+    public Futbolista ObtenerFutbolistaPorId(byte id)
         => MapFutbolista.FiltrarPorPK("idFutbolista", id)!;
 
     public void AltaPosesion(Posesion posesion)

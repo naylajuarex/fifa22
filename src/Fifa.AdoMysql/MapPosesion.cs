@@ -19,27 +19,27 @@ public class MapPosesion : Mapeador<Posesion>
     public override Posesion ObjetoDesdeFila(DataRow fila)
             => new Posesion()
             {
-                idJugador = Convert.ToByte(fila["idJugador"]),
-                idFutbolista = Convert.ToByte(fila["idFutbolista"]),
+                idJugador = MapJugador.JugadorPorId(Convert.ToByte(fila["idJugador"])),
+                idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"])),
             };
 
     public void AltaPosesion(Posesion posesion)
         => EjecutarComandoCon("altaPosesion", ConfigurarAltaPosesion, posesion);
 
     public Posesion PosesionPorId(byte id)
-        => FiltrarPorPK("idHabilidad", id)!;
+        => FiltrarPorPK("unidJugador", id)!;
     public void ConfigurarAltaPosesion(Posesion Posesion)
     {
         SetComandoSP("altaPosesion");
 
         BP.CrearParametroSalida("unidJugador")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(Posesion.idJugador)
+            .SetValor(Posesion.idJugador.idJugador)
             .AgregarParametro();
 
         BP.CrearParametro("unidFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(Posesion.idFutbolista)
+            .SetValor(Posesion.idFutbolista.idFutbolista)
             .AgregarParametro();
 
     }

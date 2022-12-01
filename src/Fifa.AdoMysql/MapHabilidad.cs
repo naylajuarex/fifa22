@@ -25,7 +25,7 @@ public class MapHabilidad : Mapeador<Habilidad>
     {
         SetComandoSP("altaHabilidad");
 
-        BP.CrearParametroSalida("unidHabilidad")
+        BP.CrearParametro("unidHabilidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UInt16)
             .SetValor(habilidad.idHabilidad)
             .AgregarParametro();

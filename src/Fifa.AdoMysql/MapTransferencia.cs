@@ -25,10 +25,10 @@ public class MapTransferencia : Mapeador<Transferencia>
 
                 fyhPublicado = Convert.ToDateTime(fila["fyhPublicado"]),
                 fyhTerminado = Convert.ToDateTime(fila["fyhTerminado"]),
-                idVendedor = (Convert.ToByte(fila["idVendedor"])),
-                idComprador = (Convert.ToByte(fila["idComprador"])),
+                idVendedor = MapJugador.JugadorPorId(Convert.ToByte(fila["idVendedor"])),
+                idComprador = MapJugador2.JugadorPorId(Convert.ToByte(fila["idComprador"])),
                 precio = Convert.ToUInt16(fila["precio"]),
-                idFutbolista = (Convert.ToByte(fila["idFutbolista"])),
+                idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"]))
             };
 
     public void AltaTransferencia(Transferencia transferencia)
@@ -53,12 +53,12 @@ public class MapTransferencia : Mapeador<Transferencia>
 
         BP.CrearParametro("unidVendedor")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(transferencia.idVendedor)
+            .SetValor(transferencia.idVendedor.idJugador)
             .AgregarParametro();
 
         BP.CrearParametro("unidComprador")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(transferencia.idComprador)
+            .SetValor(transferencia.idComprador.idJugador)
             .AgregarParametro();
 
         BP.CrearParametro("unprecio")
@@ -68,7 +68,7 @@ public class MapTransferencia : Mapeador<Transferencia>
 
         BP.CrearParametro("unidFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(transferencia.idFutbolista)
+            .SetValor(transferencia.idFutbolista.idFutbolista)
             .AgregarParametro();
     }
 

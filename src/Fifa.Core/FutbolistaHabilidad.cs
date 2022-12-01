@@ -7,11 +7,12 @@ namespace Fifa.Core
 {
     public class FutbolistaHabilidad
     {
-        public int idFutbolista { get; set; }
+        public Futbolista idFutbolista { get; set; }
         public Habilidad idHabilidad { get; set; }
 
-        public FutbolistaHabilidad(int idFutbolista, Habilidad idHabilidad)
+        public FutbolistaHabilidad(Futbolista idFutbolista, Habilidad idHabilidad)
         {
+            this.idFutbolista = idFutbolista;
             this.idHabilidad = idHabilidad;
         }
 

@@ -18,27 +18,27 @@ public class MapFutbolista : Mapeador<Futbolista>
             => new Futbolista()
             {
                 idFutbolista = Convert.ToByte(fila["idFutbolista"]),
+                ubiCampo = MapPosicion.PosicionPorId(Convert.ToByte(fila["ubiCampo"])),
                 nombre = fila["nombre"].ToString()!,
                 apellido = fila["apellido"].ToString()!,
                 nacimiento = Convert.ToDateTime(fila["nacimiento"]),
                 velocidad = Convert.ToByte(fila["velocidad"]),
                 remate = Convert.ToByte(fila["remate"]),
                 pase = Convert.ToByte(fila["pase"]),
-                defensa = Convert.ToByte(fila["defensa"]),
-                ubiCampo = MapPosicion.PosicionPorId(Convert.ToByte(fila["ubiCampo"])),
+                defensa = Convert.ToByte(fila["defensa"])
             };
 
     public void AltaFutbolista(Futbolista futbolista)
-        => EjecutarComandoCon("AltaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
+        => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
 
-    public Futbolista FutbolistaPorId(Int16 id)
+    public Futbolista FutbolistaPorId(byte id)
     => FiltrarPorPK("idFutbolista", id)!;
 
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {
-        SetComandoSP("AltaFutbolista");
+        SetComandoSP("altaFutbolista");
 
-        BP.CrearParametroSalida("unidFutbolista")
+        BP.CrearParametro("unidFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.idFutbolista)
             .AgregarParametro();
@@ -53,32 +53,32 @@ public class MapFutbolista : Mapeador<Futbolista>
             .SetValor(futbolista.apellido)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("unnacimiento")
+        BP.CrearParametro("unnacimiento")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
             .SetValor(futbolista.nacimiento)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("unubiCampo")
+        BP.CrearParametro("unubiCampo")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
-            .SetValor(futbolista.ubiCampo)
+            .SetValor(futbolista.ubiCampo.ubiCampo)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("unvelocidad")
+        BP.CrearParametro("unvelocidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.velocidad)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("unremate")
+        BP.CrearParametro("unremate")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.remate)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("unpase")
+        BP.CrearParametro("unpase")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.pase)
             .AgregarParametro();
 
-        BP.CrearParametroSalida("undefensa")
+        BP.CrearParametro("undefensa")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(futbolista.defensa)
             .AgregarParametro();

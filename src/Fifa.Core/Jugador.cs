@@ -13,9 +13,8 @@ public class Jugador
     {
     }
 
-    public Jugador(uint idJugador, string Nombre, string Apellido, string Usuario, string Contrasena, uint Moneda)
+    public Jugador(string Nombre, string Apellido, string Usuario, string Contrasena, uint Moneda)
     {
-        this.idJugador = idJugador;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Usuario = Usuario;

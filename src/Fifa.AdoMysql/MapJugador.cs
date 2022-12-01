@@ -62,7 +62,7 @@ public class MapJugador : Mapeador<Jugador>
 
     public void PostAltaJugador(Jugador jugador)
     {
-        var paramIdJugador = GetParametro("unIdJugador");
+        var paramIdJugador = GetParametro("unidJugador");
         jugador.idJugador = Convert.ToByte(paramIdJugador.Value);
     }
 }

@@ -15,13 +15,13 @@ public class MapPosicionTest
     [Fact]
     public void AltaPosicion()
     {
-        var posicion = new Posicion(1, "delantero");
+        var posicion = new Posicion(1, "Portero");
         Ado.AltaPosicion(posicion);
         Assert.Equal(1, posicion.ubiCampo);
     }
 
     [Theory]
-    [InlineData(1, "delantero")]
+    [InlineData(12, "Delantero")]
     public void TraerPosiciones(byte ubiCampo, string nPosicion)
     {
         var posiciones = Ado.ObtenerPosicion();

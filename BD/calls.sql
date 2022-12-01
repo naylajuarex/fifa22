@@ -6,20 +6,21 @@ CALL
     altaHabilidad (24, "...", "chilena");
 
 CALL
-    altaHabilidad(56, "...", "bicicleta");
+    altaHabilidad (56, "...", "bicicleta");
 
 CALL
     altaPosicion (12, "Delantero");
 
 CALL
-    altaPosicion (19, "Defensa")
+    altaPosicion (19, "Defensa");
+
 CALL
     altaFutbolista (
         14,
         "Pepe",
         '1999/02/23',
         "Sanchez",
-        12,
+        19,
         78,
         80,
         60,
@@ -32,16 +33,18 @@ CALL
         "hola",
         '1999/02/23',
         "esta",
-        19,
+        12,
         74,
         85,
         60,
         96
     );
 
+SET @JOGADOR = NULL;
+
 CALL
     altaJugador (
-        1,
+        @JOGADOR,
         "Marco",
         "Antonio",
         "MarkitoElPro007",
@@ -49,9 +52,11 @@ CALL
         1000
     );
 
+SET @JOGADOR2 = NULL;
+
 CALL
     altaJugador (
-        2,
+        @JOGADOR2,
         "Julio",
         "Cesar",
         "XxJulioGamerxX",

@@ -7,10 +7,10 @@ namespace Fifa.Core
 {
     public class Posesion
     {
-        public byte idJugador { get; set; }
-        public byte idFutbolista { get; set; }
+        public Jugador idJugador { get; set; }
+        public Futbolista idFutbolista { get; set; }
 
-        public Posesion(byte idJugador, byte idFutbolista)
+        public Posesion(Jugador idJugador, Futbolista idFutbolista)
         {
             this.idFutbolista = idFutbolista;
             this.idJugador = idJugador;

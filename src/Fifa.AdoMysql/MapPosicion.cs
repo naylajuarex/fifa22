@@ -25,7 +25,7 @@ public class MapPosicion : Mapeador<Posicion>
     {
         SetComandoSP("altaPosicion");
 
-        BP.CrearParametroSalida("unubiCampo")
+        BP.CrearParametro("unubiCampo")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .SetValor(posicion.ubiCampo)
             .AgregarParametro();
