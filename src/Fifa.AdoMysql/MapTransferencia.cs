@@ -24,12 +24,20 @@ public class MapTransferencia : Mapeador<Transferencia>
             {
 
                 fyhPublicado = Convert.ToDateTime(fila["fyhPublicado"]),
-                fyhTerminado = Convert.ToDateTime(fila["fyhTerminado"]),
-                idVendedor = MapJugador.JugadorPorId(Convert.ToByte(fila["idVendedor"])),
-                idComprador = MapJugador2.JugadorPorId(Convert.ToByte(fila["idComprador"])),
+                fyhTerminado = FechaONull(fila["fyhTerminado"]),
+                idVendedor = MapJugador.JugadorPorId(Convert.ToByte(fila["idVendedor"]))!,
+                idComprador = JugadorONull(fila["idComprador"]),
                 precio = Convert.ToUInt16(fila["precio"]),
                 idFutbolista = MapFutbolista.FutbolistaPorId(Convert.ToByte(fila["idFutbolista"]))
             };
+
+    private DateTime? FechaONull(object valor)
+        => valor == DBNull.Value ? null : Convert.ToDateTime(valor);
+
+    private Jugador? JugadorONull(object valor)
+        => valor != DBNull.Value ?
+            MapJugador2.JugadorPorId(Convert.ToByte(valor)) :
+            null;
 
     public void AltaTransferencia(Transferencia transferencia)
 => EjecutarComandoCon("publicar", ConfigurarAltaTransferencia, transferencia);

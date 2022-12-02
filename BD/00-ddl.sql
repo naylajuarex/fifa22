@@ -72,7 +72,11 @@ CREATE TABLE
         precio MEDIUMINT UNSIGNED NOT NULL,
         fyhTerminado DATETIME NULL,
         idFutbolista SMALLINT UNSIGNED NOT NULL,
-        PRIMARY KEY (fyhPublicado),
+        PRIMARY KEY (
+            fyhPublicado,
+            idVendedor,
+            idFutbolista
+        ),
         CONSTRAINT fk_Transferencia_idFutbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista),
         CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (IdJugador),
         CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (IdJugador)

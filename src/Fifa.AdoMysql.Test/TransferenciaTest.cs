@@ -15,13 +15,13 @@ public class MapTransferenciaTest
     [Fact]
     public void AltaTransferencia()
     {
-        DateTime ahora = new DateTime(2022, 11, 18);
+        DateTime ahora = DateTime.Now;
         var transferencia = new Transferencia(ahora, Ado.ObtenerJugadorPorId(2), Ado.ObtenerFutbolistaPorId(1), 430);
 
         Ado.AltaTransferencia(transferencia);
         var cantidadEnAdo = Ado.MapTransferencia.ColeccionDesdeTabla().Count;
 
-        Assert.Equal(2, cantidadEnAdo);
+        Assert.Equal(3, cantidadEnAdo);
     }
 
     [Theory]

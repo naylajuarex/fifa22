@@ -21,8 +21,8 @@ public class MapJugador : Mapeador<Jugador>
     public void AltaJugador(Jugador jugador)
         => EjecutarComandoCon("altaJugador", ConfigurarAltaJugador, PostAltaJugador, jugador);
 
-    public Jugador JugadorPorId(byte id)
-        => FiltrarPorPK("idJugador", id)!;
+    public Jugador? JugadorPorId(byte? id)
+        => id is null ? null : FiltrarPorPK("idJugador", id);
 
     public void ConfigurarAltaJugador(Jugador jugador)
     {
