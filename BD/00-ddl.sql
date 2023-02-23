@@ -81,3 +81,5 @@ CREATE TABLE
         CONSTRAINT fk_Transferencia_idVendedor FOREIGN KEY (idVendedor) REFERENCES Jugador (IdJugador),
         CONSTRAINT fk_Transferencia_idComprador FOREIGN KEY (idComprador) REFERENCES Jugador (IdJugador)
     );
+
+    
